@@ -10,7 +10,17 @@
 }
 
 .custom-bg-nav{
-    background-image: url('./imgs/gemini-svg\ \(4\).svg');
+    background-color: #2660a4;
+}
+
+.navbar-brand img{
+    max-width: 3rem;
+    max-height: auto;
+}
+
+.logotext{
+    font-weight: light !important;
+    letter-spacing: 0.1rem;
 }
 
 .nav li:hover {
@@ -18,3 +28,5 @@
     border-radius: 0.5rem;
     transform: scale(1.05);
 }
+
+
