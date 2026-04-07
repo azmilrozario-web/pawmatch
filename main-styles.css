@@ -1,0 +1,14 @@
+/* Navbar */
+
+/* Home Button */
+.px-2 {
+    padding-left: 1.5rem !important;
+}
+
+.custom-bg-section{
+    background-image: url('./imgs/gemini-svg\ \(4\).svg');
+}
+
+.custom-bg-nav{
+    background-image: url('./imgs/gemini-svg\ \(4\).svg');
+}
