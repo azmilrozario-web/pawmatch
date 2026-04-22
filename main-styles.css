@@ -8,7 +8,7 @@
 
 /* Navigation bar */
 
-.nav-link {
+.navbar .nav-link {
     color: #ffffff !important;
     font-size: 1.1rem;
 }
@@ -47,6 +47,30 @@
 }
 
 /* Hero section */
+
+.btn-nav {
+    background-color: #2660a4;
+    border-color: #2660a4;
+    color: #ffffff;
+}
+
+.btn-nav:hover {
+    background-color: #1d4d8a;
+    border-color: #1d4d8a;
+    color: #ffffff;
+}
+
+.btn-nav-light {
+    background-color: #2f6bbf;
+    border-color: #2f6bbf;
+    color: #ffffff;
+}
+
+.btn-nav-light:hover {
+    background-color: #2660a4;
+    border-color: #2660a4;
+    color: #ffffff;
+}
 
 /* Cards section */
 
