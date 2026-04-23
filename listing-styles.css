@@ -1,0 +1,147 @@
+/* ! Homepage */
+
+* {
+    font-family: Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation bar */
+
+.nav-link {
+    color: #ffffff !important;
+    font-size: 1.1rem;
+}
+
+.px-2 {
+    padding-left: 1.5rem !important;
+}
+
+.custom-bg-section {
+    background-image: url('./imgs/gemini-svg\ \(4\).svg');
+}
+
+.custom-bg-nav {
+    background-color: #2660a4;
+}
+
+.logoimage {
+    height: 6.875rem;
+    width: auto !important;
+}
+
+.logotext {
+    font-weight: light !important;
+    font-size: 2.5rem;
+    margin-left: -2.5rem;
+}
+
+.nav li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    transform: scale(1.05);
+}
+
+.d-flex {
+    margin-right: 1rem;
+}
+
+/* Hero section */
+
+/* Cards section */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: left;
+}
+
+.card {
+    height: 20rem;
+    width: 100%;
+}
+
+.card-img-top {
+    height: 9.375rem;
+    object-fit: cover;
+}
+
+/* Listing */
+
+/* Sidebar styling */
+aside {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-right: 1rem;
+
+}
+
+/* Responsive cards grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Headings inside the sidebar */
+aside h4,
+aside h5 {
+    color: #2660a4;
+    /* matches your navbar blue */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+aside input[type="checkbox"]:hover,
+aside select:hover {
+    outline: 2px solid #2660a4;
+    cursor: pointer;
+}
+
+
+
+/* Filter labels */
+aside label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #2660a4;
+}
+
+/* Card body spacing */
+.card-body {
+    padding: 1rem;
+}
+
+/* Card title */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-img-top {
+    height: 9.375rem;
+    object-fit: cover;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+  aside {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+  }
+}
