@@ -105,12 +105,19 @@ function createCard(item) {
   // !! 4.2. Create the Subtitle (Gender)
   const gender = document.createElement("h6");
   gender.classList.add("card-subtitle", "mb-2", "text-body-secondary");
-  gender.textContent = `Gender: ${String(item.gender).toLowerCase()}`;
+  // gender.textContent = `Gender: ${String(item.gender).toLowerCase()}`;
 
   /* 
     * Please include the code for Gender similar to item 4.1.1.
   */
- // !! 4.2.1. Create the Gender label and text
+  // !! 4.2.1. Create the Gender label and text
+   // !! 4.1.1. Create the Age label and text
+  const genderLabel = document.createElement("span");
+  genderLabel.textContent = "Gender: "
+  genderLabel.classList.add("fw-bolder");
+  const genderText = document.createElement("span");
+  genderText.textContent = `${item.gender.toLowerCase()}`;
+  gender.append(genderLabel, genderText);
 
   // 5. Create the Description
   const description = document.createElement("p");
