@@ -1,0 +1,21 @@
+.values-image img {
+    width: 100%;
+    max-width: 280px;
+    /* controls actual size */
+    height: auto;
+    /* keeps proportions */
+}
+
+.community-text-header {
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.community-text {
+    text-align: justify;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
