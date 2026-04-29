@@ -105,68 +105,82 @@
             <option value="rabbit">Roger</option>
             <option value="hamster">Tim</option>
           </select>
+          <div class="invalid-feedback text-danger">
+            Please select a pet.
+          </div>
         </div>
 
         <!-- Applicant Name -->
         <div class="form-group">
           <label for="fullName">Full Name</label>
           <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
+          <div class="invalid-feedback text-danger">
+            Please provide your name
+          </div>
         </div>
-
-        <div class="invalid-feedback text-white">
-          Please provide a valid email.
-        </div>
-
+        
         <!-- Contact Number -->
         <div class="form-group">
           <label for="contact">Contact Number</label>
-          <input type="text" id="contact" name="contact" placeholder="e.g. 91234567">
+          <input type="tel" id="contact" name="contact" pattern="[689]\d{7}" placeholder="e.g. 91234567" required>
+          <div class="invalid-feedback text-danger">
+            Please provide a phone number.
+          </div>
         </div>
-
+        
         <!-- Email -->
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" name="email" placeholder="example@email.com" required>
+          <div class="invalid-feedback text-danger">
+            Please provide a valid email.
+          </div>          
         </div>
-
-
-        <div class="invalid-feedback text-white">
-          Please provide a valid email.
-        </div>
-
 
         <!-- Home Address -->
         <div class="form-group">
           <label for="address">Home Address</label>
-          <input type="text" id="address" name="address">
+          <input type="text" id="address" name="address" required>
+          <div class="invalid-feedback text-danger">
+            Please provide a valid address.
+          </div> 
         </div>
 
         <!-- Housing Type -->
         <div class="form-group">
           <label for="housing">Housing Type</label>
-          <select id="housing" name="housing">
+          <select id="housing" name="housing" required>
             <option value="">Select</option>
             <option value="hdb">HDB</option>
             <option value="condo">Condominium</option>
             <option value="landed">Landed Property</option>
           </select>
+          <div class="invalid-feedback text-danger">
+            Please select a housing type.
+          </div> 
         </div>
 
         <!-- Experience -->
         <div class="form-group">
           <label for="experience">Pet Ownership Experience</label>
-          <select id="experience" name="experience">
+          <select id="experience" name="experience" required>
             <option value="">Select</option>
             <option value="none">No experience</option>
             <option value="some">Some experience</option>
             <option value="experienced">Experienced</option>
           </select>
+          <div class="invalid-feedback text-danger">
+            Please indicate your experience.
+          </div> 
         </div>
 
         <!-- Reason -->
         <div class="form-group full-width">
           <label for="reason">Reason for Adoption</label>
-          <textarea id="reason" name="reason" rows="3"></textarea>
+          <textarea id="reason" name="reason" rows="3" required></textarea>
+          <div class="invalid-feedback text-danger">
+            Please indicate your reason for adopting the pet.
+          </div> 
         </div>
 
         <!-- Submit -->
@@ -293,50 +307,17 @@
       }
 
       const formData = {
-        blocks: [
-          {
-            type: "sender",
-            properties: {
-              email: email,
-            }
-          },
-          {
-            type: "text",
-            name: "petName",
-            value: petName,
-          },
-          {
-            type: "text",
-            name: "fullName",
-            value: fullName,
-          },
-          {
-            type: "text",
-            name: "contact",
-            value: contact,
-          },
-          {
-            type: "text",
-            name: "address",
-            value: address,
-          },
-          {
-            type: "text",
-            name: "housing",
-            value: housing,
-          },
-          {
-            type: "text",
-            name: "experience",
-            value: experience,
-          },
-          {
-            type: "text",
-            name: "reason",
-            value: reason,
-          }
-        ]
+          email: email,
+          petName: petName,
+          fullName: fullName,
+          contact: contact,
+          address: address,
+          housing: housing,
+          experience: experience,
+          reason: reason,
       };
+
+      console.log(formData);
 
       //2. Exeception handling using a try/catch block
       try {
