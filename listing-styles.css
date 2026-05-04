@@ -8,7 +8,7 @@
 
 /* Navigation bar */
 
-.nav-link {
+.navbar .nav-link {
     color: #ffffff !important;
     font-size: 1.1rem;
 }
@@ -34,7 +34,7 @@
     font-weight: light !important;
     font-size: 2.5rem;
     margin-left: -2.5rem;
-}
+  }
 
 .nav li:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -47,6 +47,30 @@
 }
 
 /* Hero section */
+/* Navigation buttons */
+.btn-nav {
+    background-color: #2660a4;
+    border-color: #2660a4;
+    color: #ffffff;
+}
+
+.btn-nav:hover {
+    background-color: #1d4d8a;
+    border-color: #1d4d8a;
+    color: #ffffff;
+}
+
+.btn-nav-light {
+    background-color: #2f6bbf;
+    border-color: #2f6bbf;
+    color: #ffffff;
+}
+
+.btn-nav-light:hover {
+    background-color: #2660a4;
+    border-color: #2660a4;
+    color: #ffffff;
+}
 
 /* Cards section */
 
@@ -58,25 +82,15 @@
 }
 
 .card {
-    height: 20rem;
+    height: 25rem;
     width: 100%;
 }
 
 .card-img-top {
-    height: 9.375rem;
+    height: 34rem;
     object-fit: cover;
 }
 
-/* Listing */
-
-/* Sidebar styling */
-aside {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-right: 1rem;
-
-}
 
 /* Responsive cards grid */
 .cards-grid {
@@ -92,10 +106,12 @@ aside {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+
 .card {
     border-radius: 8px;
     overflow: hidden;
 }
+
 
 /* Headings inside the sidebar */
 aside h4,
@@ -113,8 +129,6 @@ aside select:hover {
     cursor: pointer;
 }
 
-
-
 /* Filter labels */
 aside label {
     font-weight: 500;
@@ -124,20 +138,22 @@ aside label {
 
 /* Card body spacing */
 .card-body {
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
 /* Card title */
 .card-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .card-img-top {
-    height: 9.375rem;
+    height: 9.375
+    rem;
     object-fit: cover;
     width: 100%;
 }
+
 
 @media (max-width: 768px) {
   aside {
