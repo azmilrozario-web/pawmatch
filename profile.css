@@ -6,24 +6,9 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: var(--primary-color);
+    /* background: var(--primary-color); */
     margin: 0;
-    padding-top: 1.5rem;
 }
-
-.navbar {
-    padding: 0.3rem 1rem;
-}
-
-.logoimage {
-    height: 3.5rem; /* reduce from 6.875rem */
-}
-
-.logotext {
-    font-size: 1.8rem;
-    color: white;
-}
-
 
 /* Container */
 .profile-container {

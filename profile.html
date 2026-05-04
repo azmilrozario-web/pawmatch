@@ -11,7 +11,8 @@
     
 
     <!-- Your CSS -->
-    <link rel="stylesheet" href="navbar.css" />
+    <!-- <link rel="stylesheet" href="navbar.css" /> -->
+    <link rel="stylesheet" href="./home.css">
     <link rel="stylesheet" href="profile.css" />
 </head>
 
@@ -20,42 +21,49 @@
     <!-- NAVBAR -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand" href="#">
                 <img class="logoimage" src="./imgs/logo.svg" alt="Logo">
-                <span class="text-white logotext">PawMatch</span>
+                <span class="fw-bold text-white logotext">
+                    PawMatch
+                </span>
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Listings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">About</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle fs-4"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Log in</a></li>
                             <li><a class="dropdown-item" href="#">Signup</a></li>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
-
-                <form class="d-flex ps-2 pe-4">
-                    <input class="form-control me-2" type="search" placeholder="Search">
-                    <button class="btn btn-outline-light">Search</button>
+                <form class="d-flex ps-2 pe-5" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
             </div>
-        </div>
     </nav>
 
     <!-- PROFILE -->
@@ -127,13 +135,13 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="py-3 mt-5">
+    <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-white">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Listings</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
+            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
         </ul>
-        <p class="text-center text-white">© 2026 PawMatch Ltd</p>
+        <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
     </footer>
 
     <!-- Bootstrap JS -->
