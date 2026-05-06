@@ -34,8 +34,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const filtered = pets.filter(
       (pet) =>
         pet.name.toLowerCase().includes(q) ||
-        pet.description.toLowerCase().includes(q) ||
-        pet.species.toLowerCase().includes(q)
+        pet.gender.toLowerCase() === q ||
+        pet.species.toLowerCase().includes(q) ||
+        String(pet.age).includes(q)
     );
     renderListings(filtered);
   });
