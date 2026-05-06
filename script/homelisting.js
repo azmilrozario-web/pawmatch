@@ -8,11 +8,36 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // 1.1. Reference the <div> element of id: productList to pupulate the list of products
   const homeListing = document.getElementById("homeListing");
 
-  pets.forEach((pet) => {
-    const card = document.createElement("div");
-    card.classList.add("col");
-    card.append(createCard(pet));
-    homeListing.append(card);
+  function renderListings(list) {
+    homeListing.innerHTML = "";
+    if (list.length === 0) {
+      homeListing.innerHTML = `<p class="text-center text-muted w-100">No pets found.</p>`;
+      return;
+    }
+    list.forEach((pet) => {
+      const col = document.createElement("div");
+      col.classList.add("col");
+      col.append(createCard(pet));
+      homeListing.append(col);
+    });
+  }
+
+  renderListings(pets);
+
+  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.getElementById("searchInput");
+
+  searchForm.addEventListener("submit", (e) => e.preventDefault());
+
+  searchInput.addEventListener("input", () => {
+    const q = searchInput.value.toLowerCase().trim();
+    const filtered = pets.filter(
+      (pet) =>
+        pet.name.toLowerCase().includes(q) ||
+        pet.description.toLowerCase().includes(q) ||
+        pet.species.toLowerCase().includes(q)
+    );
+    renderListings(filtered);
   });
 
   // 2. Reference the <div> element of id: productModal and its elements to update the modal's data
@@ -48,7 +73,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // !! IMPORTANT: To remove this delay once the data is fetched from the server
     const sleep = (delay) =>
       new Promise((resolve) => setTimeout(resolve, delay));
-    await sleep(1000);
+    await sleep(500);
 
     // !! the product id is along the URL
     const params = new URLSearchParams(window.location.search);
@@ -78,7 +103,7 @@ function createCard(item) {
   // 2. Create the Image
   const img = document.createElement("img");
   img.src = item.imageUrl;
-  img.classList.add("card-img-top");
+  img.classList.add("card-img-top", `pet-img-${item.id}`);
   img.alt = item.title;
 
   // 3. Create the Card Body
@@ -87,8 +112,18 @@ function createCard(item) {
 
   // 4. Create the Title
   const title = document.createElement("h5");
-  title.classList.add("card-title");
+  title.classList.add("card-title", "mb-3", "fs-4");
   title.textContent = item.name;
+
+  // !! 4.0. Create the Subtitle (Species)
+  const species = document.createElement("h6");
+  species.classList.add("card-subtitle", "mb-2", "text-body-secondary");
+  const speciesLabel = document.createElement("span");
+  speciesLabel.textContent = "Species: ";
+  speciesLabel.classList.add("fw-bolder");
+  const speciesText = document.createElement("span");
+  speciesText.textContent = item.species;
+  species.append(speciesLabel, speciesText);
 
   // !! 4.1. Create the Subtitle (Age)
   const age = document.createElement("h6");
@@ -105,7 +140,13 @@ function createCard(item) {
   // !! 4.2. Create the Subtitle (Gender)
   const gender = document.createElement("h6");
   gender.classList.add("card-subtitle", "mb-2", "text-body-secondary");
-  gender.textContent = `Gender: ${String(item.gender).toLowerCase()}`;
+  const genderLabel = document.createElement("span");
+  genderLabel.textContent = "Gender: ";
+  genderLabel.classList.add("fw-bolder");
+  const genderText = document.createElement("span");
+  const g = String(item.gender).toLowerCase();
+  genderText.textContent = g.charAt(0).toUpperCase() + g.slice(1);
+  gender.append(genderLabel, genderText);
 
   /* 
     * Please include the code for Gender similar to item 4.1.1.
@@ -143,7 +184,7 @@ function createCard(item) {
   });
 
   // 7. Assemble the pieces (Bottom-up)
-  cardBody.append(title, age, gender, description, button);
+  cardBody.append(title, age, gender, species, description, button);
   card.append(img, cardBody);
 
   return card;
