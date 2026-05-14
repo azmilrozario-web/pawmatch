@@ -154,6 +154,24 @@ aside label {
     width: 100%;
 }
 
+/* Search Button */
+.btn-search {
+    background-color: #2660a4;   /* same blue as navbar */
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    width: 100%;                /* full width in sidebar */
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-search:hover {
+    background-color: #1d4d8a;   /* darker blue on hover */
+    transform: scale(1.02);      /* subtle hover effect */
+    cursor: pointer;
+}
+
 
 @media (max-width: 768px) {
   aside {

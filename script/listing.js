@@ -129,6 +129,7 @@ function createCard(item) {
   button.addEventListener("click", (event) => {
     event.preventDefault();
 
+  
     // Get current URL and search parameters
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
