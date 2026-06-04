@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async(event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
   event.preventDefault();
 
   // 1. Simulated array of Data
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async(event) => {
   const appModalImage = document.getElementById("appModalImage");
   const appModalType = document.getElementById("appModalType");
   const appModalAdoptionStatus = document.getElementById("appModalAdoptionStatus");
+  const adoptBtn = document.getElementById("adoptBtn");
 
   const spinnerTitle = new Spinner(appModalTitle);
   const spinnerType = new Spinner(appModalType);
@@ -34,12 +35,12 @@ document.addEventListener("DOMContentLoaded", async(event) => {
     appModalAdoptionStatus.textContent = "";
     appModalImage.src =
       "https://placehold.co/100x100/CCCCCC/FFFFFF?text=Loading Image...";
-    if(spinnerTitle.spinner !== null)
-        spinnerTitle.displaySpinner(false);
-    if(spinnerType.spinner !== null)
-        spinnerType.displaySpinner(false);
-    if(spinnerAdoptionStatus.spinner !== null)
-        spinnerAdoptionStatus.displaySpinner(false);
+    if (spinnerTitle.spinner !== null)
+      spinnerTitle.displaySpinner(false);
+    if (spinnerType.spinner !== null)
+      spinnerType.displaySpinner(false);
+    if (spinnerAdoptionStatus.spinner !== null)
+      spinnerAdoptionStatus.displaySpinner(false);
   });
 
   // Show everything after the modal finished sliding in
@@ -71,7 +72,12 @@ document.addEventListener("DOMContentLoaded", async(event) => {
         appModalTitle.textContent = pet.name;
         appModalImage.src = pet.imageUrl;
         appModalType.textContent = pet.animalType;
-        appModalAdoptionStatus.textContent = !pet.adoptionStatus ? "AVAILABLE" : "ADOPTED";
+        appModalAdoptionStatus.textContent =
+          !pet.adoptionStatus ? "AVAILABLE" : "ADOPTED";
+
+        adoptBtn.onclick = () => {
+          window.location.href = `form.html?pet=${pet.id}`;
+        };
       }
     }
   });
