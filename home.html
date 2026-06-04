@@ -77,15 +77,14 @@
     <!-- Hero Section -->
 
     <div class="position-relative text-center overflow-hidden" style="min-height: 500px;">
-        <img src="imgs/priscilla-du-preez-qtkpOxCpl0Y-unsplash.jpg"
-            class="position-absolute top-0 start-0 w-100 h-100"
-            style="object-fit: cover; object-position: center 30%;"
-            alt="Example image" loading="lazy">
+        <img src="imgs/priscilla-du-preez-qtkpOxCpl0Y-unsplash.jpg" class="position-absolute top-0 start-0 w-100 h-100"
+            style="object-fit: cover; object-position: center 30%;" alt="Example image" loading="lazy">
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.30);"></div>
         <div class="position-absolute top-50 start-50 translate-middle w-100 px-5">
             <h1 class="display-4 fw-bold text-white">Find Your Perfect Compawnian</h1>
             <div class="col-lg-6 mx-auto">
-                <p class="lead mb-4 text-white text-start">Find paw potential companions born to perfect pawsible matches. Adoption has never been this easy!</p>
+                <p class="lead mb-4 text-white text-start">Find paw potential companions born to perfect pawsible
+                    matches. Adoption has never been this easy!</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                     <button type="button" class="btn btn-nav btn-lg px-4 me-sm-3">Adopt Now</button>
                 </div>
@@ -103,7 +102,7 @@
         </div>
 
     </div>
-    
+
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
@@ -114,67 +113,54 @@
     </footer>
 
     <!-- ! appModal -->
-    <div
-      class="modal fade"
-      id="appModal"
-      tabindex="-1"
-      aria-labelledby="appModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- ! appModalTitle -->
-            <h1 id="appModalTitle" class="modal-title fs-5" id="exampleModalLabel">
+    <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- ! appModalTitle -->
+                    <h1 id="appModalTitle" class="modal-title fs-5" id="exampleModalLabel">
 
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div id="productModalBody" class="modal-body">
-            
-            <!-- ! Start Card area to display the selected Product -->
-            <div class="card h-100 product-card rounded-0 border-0">
-                <!-- ! appModalImage -->
-                <img id="appModalImage" class="card-img-top rounded-0" alt="...">
-                <div class="d-flex card-body flex-column">
-                    <p class="card-text d-block">
-                        <span>TYPE:</span>
-                        <span id="appModalType">
-                            <!-- ! appModaType -->
-                        </span>
-                    </p>
-                    <p class="card-text d-block">
-                        <span>ADOPTION STATUS:</span>
-                        <span id="appModalAdoptionStatus">
-                            <!-- ! appModalAdoptionStatus -->
-                        </span>
-                    </p>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="productModalBody" class="modal-body">
+
+                    <!-- ! Start Card area to display the selected Product -->
+                    <div class="card h-100 product-card rounded-0 border-0">
+                        <!-- ! appModalImage -->
+                        <img id="appModalImage" class="card-img-top rounded-0" alt="...">
+                        <div class="d-flex card-body flex-column">
+                            <p class="card-text d-block">
+                                <span>TYPE:</span>
+                                <span id="appModalType">
+                                    <!-- ! appModaType -->
+                                </span>
+                            </p>
+                            <p class="card-text d-block">
+                                <span>ADOPTION STATUS:</span>
+                                <span id="appModalAdoptionStatus">
+                                    <!-- ! appModalAdoptionStatus -->
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- ! End Card area to display the selected Product -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button id="adoptBtn" type="button" class="btn btn-nav-light">
+                        Adopt me!
+                    </button>
                 </div>
             </div>
-            <!-- ! End Card area to display the selected Product -->
-
         </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-nav-light">Adopt me!</button>
-          </div>
-        </div>
-      </div>
-    </div> 
+    </div>
 
     <!-- !! Import the data and the script to dynamically list the pets -->
-     <script src="./script/components/Spinner.js"></script>
+    <script src="./script/components/Spinner.js"></script>
     <script src="./script/data.js"></script>
     <script src="./script/homelisting.js"></script>
 
