@@ -2,140 +2,254 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | PawMatch</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Your CSS -->
-    <!-- <link rel="stylesheet" href="navbar.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./scripts/nav.css">
-    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="./profile.css?v=3">
 </head>
 
 <body class="custom-bg-section">
-
-    <!-- NAVBAR -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img class="logoimage" src="./imgs/logo.svg" alt="Logo">
-                <span class="fw-bold text-white logotext">
-                    PawMatch
-                </span>
+            <a class="navbar-brand" href="home.html">
+                <img class="logoimage" src="./imgs/logo.svg" alt="PawMatch logo">
+                <span class="fw-bold text-white logotext">PawMatch</span>
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Listings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">About</a>
-                    </li>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="listings.html">Listings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" aria-label="Open user menu">
                             <i class="bi bi-person-circle fs-4"></i>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Log in</a></li>
-                            <li><a class="dropdown-item" href="#">Signup</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><a class="dropdown-item" href="#">Sign up</a></li>
+                            <li><a class="dropdown-item active" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex ps-2 pe-5" role="search">
+
+                <form class="d-flex ps-lg-2 pe-lg-4" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
             </div>
+        </div>
     </nav>
 
-    <!-- PROFILE -->
-    <div class="profile-container container mt-4">
+    <main class="profile-container container">
+        <div class="page-heading">
+            <div>
+                <p class="eyebrow">My account</p>
+                <h1>User Profile</h1>
+            </div>
+            <button id="edit-profile-button" class="edit-profile-button" type="button">
+                <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                Edit profile
+            </button>
+        </div>
 
-        <h2>User Profile</h2>
-
-        <div class="profile-header">
-            <img src="./imgs/user.jpg" class="avatar" />
+        <section class="profile-header" aria-labelledby="user-name">
+            <img id="user-image" src="./imgs/user.jpg" class="avatar" alt="User profile">
             <div class="user-info">
-                <h3>User Name</h3>
-                <p>Singapore</p>
-                <p>📞 +65 1234 5678</p>
-                <p>✉️ user@gmail.com</p>
-            </div>
-        </div>
-
-        <div class="tabs">
-            <span class="active">Saved</span>
-            <span>History</span>
-        </div>
-
-        <div class="content">
-
-            <!-- Saved -->
-            <div class="saved">
-                <h4>Saved Listings</h4>
-
-                <div class="cards">
-                    <div class="card">
-                        <img src="./imgs/Sheldon.jpg" />
-                        <h5>Buddy</h5>
-                        <p>Golden Retriever</p>
-                        <button>View Details</button>
-                    </div>
-
-                    <div class="card">
-                        <img src="./imgs/Sheldon.jpg" />
-                        <h5>Doss</h5>
-                        <p>Labrador</p>
-                        <button>View Details</button>
-                    </div>
+                <h2 id="user-name">User Name</h2>
+                <div class="user-contact">
+                    <span><i class="bi bi-geo-alt-fill" aria-hidden="true"></i><span id="user-address">Singapore</span></span>
+                    <span><i class="bi bi-telephone-fill" aria-hidden="true"></i><span id="user-contact">1234 5678</span></span>
+                    <span><i class="bi bi-envelope-fill" aria-hidden="true"></i><span id="user-email">user@gmail.com</span></span>
                 </div>
             </div>
+        </section>
 
-            <!-- History -->
-            <div class="history">
-                <h4>Adoption History</h4>
-
-                <div class="history-item">
-                    <div>
-                        <p><strong>User Name</strong></p>
-                        <p>Submitted application</p>
-                    </div>
-                    <span class="status green">Success</span>
+        <form id="edit-profile-form" class="edit-profile-form" hidden>
+            <div class="edit-form-heading">
+                <div>
+                    <p class="eyebrow">Account details</p>
+                    <h2>Edit Profile</h2>
                 </div>
-
-                <div class="history-item">
-                    <div>
-                        <p><strong>User Name</strong></p>
-                        <p>Interview scheduled</p>
-                    </div>
-                    <span class="status orange">Contact</span>
-                </div>
-
+                <button id="cancel-edit-button" class="edit-close-button" type="button" aria-label="Close edit profile">
+                    <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
             </div>
 
-        </div>
-    </div>
+            <div class="edit-form-grid">
+                <label>
+                    First name
+                    <input id="edit-first-name" type="text" required>
+                </label>
+                <label>
+                    Last name
+                    <input id="edit-last-name" type="text" required>
+                </label>
+                <label>
+                    Email
+                    <input id="edit-email" type="email" required>
+                </label>
+                <label>
+                    Phone
+                    <input id="edit-phone" type="tel">
+                </label>
+                <label class="edit-wide-field">
+                    Address
+                    <input id="edit-address" type="text" required>
+                </label>
+                <label>
+                    Housing type
+                    <select id="edit-housing-type">
+                        <option value="HDB">HDB</option>
+                        <option value="CONDOMINIUM">Condominium</option>
+                        <option value="LANDED">Landed</option>
+                    </select>
+                </label>
+                <label>
+                    Experience level
+                    <select id="edit-experience-level">
+                        <option value="NONE">None</option>
+                        <option value="ONE_TO_THREE">One to three years</option>
+                        <option value="MORE_THAN_THREE">More than three years</option>
+                    </select>
+                </label>
+            </div>
 
-    <!-- FOOTER -->
-    <footer class="py-3 my-4">
+            <div class="edit-form-actions">
+                <p id="edit-profile-message" aria-live="polite"></p>
+                <button type="submit">Save changes</button>
+            </div>
+        </form>
+
+        <section class="applications-section" aria-labelledby="applications-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Adoption progress</p>
+                    <h2 id="applications-title">Application Details</h2>
+                </div>
+                <span class="application-count"><strong id="application-count">3</strong> applications</span>
+            </div>
+
+            <div id="application-list" class="application-list" aria-live="polite">
+                <article class="application-card">
+                    <div class="pet-summary">
+                        <img src="./imgs/Sheldon.jpg" alt="Buddy">
+                        <div>
+                            <p class="application-id">Application #1024</p>
+                            <h3>Buddy</h3>
+                            <p>Golden Retriever</p>
+                        </div>
+                    </div>
+
+                    <dl class="application-meta">
+                        <div>
+                            <dt>Applicant ID</dt>
+                            <dd>24</dd>
+                        </div>
+                        <div>
+                            <dt>Approval date</dt>
+                            <dd>18 May 2026</dd>
+                        </div>
+                        <div>
+                            <dt>Reason</dt>
+                            <dd>Looking for a friendly family companion.</dd>
+                        </div>
+                    </dl>
+
+                    <div class="application-update">
+                        <span class="status status-approved">
+                            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                            Approved
+                        </span>
+                        <p><strong>Latest message</strong> Your application has been approved. We will contact you shortly.</p>
+                    </div>
+                </article>
+
+                <article class="application-card">
+                    <div class="pet-summary">
+                        <img src="./imgs/Sheldon.jpg" alt="Doss">
+                        <div>
+                            <p class="application-id">Application #1025</p>
+                            <h3>Doss</h3>
+                            <p>Labrador</p>
+                        </div>
+                    </div>
+
+                    <dl class="application-meta">
+                        <div>
+                            <dt>Applicant ID</dt>
+                            <dd>24</dd>
+                        </div>
+                        <div>
+                            <dt>Approval date</dt>
+                            <dd>Pending</dd>
+                        </div>
+                        <div>
+                            <dt>Reason</dt>
+                            <dd>Experienced adopter with a spacious home.</dd>
+                        </div>
+                    </dl>
+
+                    <div class="application-update">
+                        <span class="status status-review">
+                            <i class="bi bi-clock-fill" aria-hidden="true"></i>
+                            Under review
+                        </span>
+                        <p><strong>Latest message</strong> Your application is being reviewed by the adoption team.</p>
+                    </div>
+                </article>
+
+                <article class="application-card">
+                    <div class="pet-summary">
+                        <img src="./imgs/Sheldon.jpg" alt="Sheldon">
+                        <div>
+                            <p class="application-id">Application #1026</p>
+                            <h3>Sheldon</h3>
+                            <p>Golden Retriever</p>
+                        </div>
+                    </div>
+
+                    <dl class="application-meta">
+                        <div>
+                            <dt>Applicant ID</dt>
+                            <dd>24</dd>
+                        </div>
+                        <div>
+                            <dt>Approval date</dt>
+                            <dd>21 May 2026</dd>
+                        </div>
+                        <div>
+                            <dt>Reason</dt>
+                            <dd>Seeking an active pet for daily walks and companionship.</dd>
+                        </div>
+                    </dl>
+
+                    <div class="application-update">
+                        <span class="status status-declined">
+                            <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                            Not approved
+                        </span>
+                        <p><strong>Latest message</strong> Another home was selected, but you may apply for other pets.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-3 mt-5">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
             <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
@@ -144,9 +258,8 @@
         <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="./profile.js?v=3" defer></script>
 </body>
 
 </html>
