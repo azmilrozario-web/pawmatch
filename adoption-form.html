@@ -20,7 +20,7 @@
     integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
 
   <!-- Import custom stylesheet -->
-  <link rel="stylesheet" href="./main-styles.css">
+  <link rel="stylesheet" href="./navbar.css">
   <link rel="stylesheet" href="./adoption-form.css">
 </head>
 <!-- ! Homepage -->
@@ -91,7 +91,7 @@
 
   <div class="form-wrapper">
     <div class="form-container">
-      <h2>Adoption Form</h2>
+      <h2>Adoption Application</h2>
 
       <form id="adoptionForm" onsubmit="submitForm()" class="needs-validation" novalidate>
 
@@ -110,69 +110,72 @@
           </div>
         </div>
 
-        <!-- Applicant Name -->
-        <div class="form-group">
-          <label for="fullName">Full Name</label>
-          <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
-          <div class="invalid-feedback text-danger">
-            Please provide your name
+        <template>
+          <!-- Applicant Name -->
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
+            <div class="invalid-feedback text-danger">
+              Please provide your name
+            </div>
           </div>
-        </div>
-        
-        <!-- Contact Number -->
-        <div class="form-group">
-          <label for="contact">Contact Number</label>
-          <input type="tel" id="contact" name="contact" pattern="[689]\d{7}" placeholder="e.g. 91234567" required>
-          <div class="invalid-feedback text-danger">
-            Please provide a phone number.
+
+          <!-- Contact Number -->
+          <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" pattern="[689]\d{7}" placeholder="e.g. 91234567" required>
+            <div class="invalid-feedback text-danger">
+              Please provide a phone number.
+            </div>
           </div>
-        </div>
-        
-        <!-- Email -->
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="example@email.com" required>
-          <div class="invalid-feedback text-danger">
-            Please provide a valid email.
-          </div>          
-        </div>
 
-        <!-- Home Address -->
-        <div class="form-group">
-          <label for="address">Home Address</label>
-          <input type="text" id="address" name="address" required>
-          <div class="invalid-feedback text-danger">
-            Please provide a valid address.
-          </div> 
-        </div>
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            <div class="invalid-feedback text-danger">
+              Please provide a valid email.
+            </div>
+          </div>
 
-        <!-- Housing Type -->
-        <div class="form-group">
-          <label for="housing">Housing Type</label>
-          <select id="housing" name="housing" required>
-            <option value="">Select</option>
-            <option value="hdb">HDB</option>
-            <option value="condo">Condominium</option>
-            <option value="landed">Landed Property</option>
-          </select>
-          <div class="invalid-feedback text-danger">
-            Please select a housing type.
-          </div> 
-        </div>
+          <!-- Home Address -->
+          <div class="form-group">
+            <label for="address">Home Address</label>
+            <input type="text" id="address" name="address" required>
+            <div class="invalid-feedback text-danger">
+              Please provide a valid address.
+            </div>
+          </div>
 
-        <!-- Experience -->
-        <div class="form-group">
-          <label for="experience">Pet Ownership Experience</label>
-          <select id="experience" name="experience" required>
-            <option value="">Select</option>
-            <option value="none">No experience</option>
-            <option value="some">Some experience</option>
-            <option value="experienced">Experienced</option>
-          </select>
-          <div class="invalid-feedback text-danger">
-            Please indicate your experience.
-          </div> 
-        </div>
+          <!-- Housing Type -->
+          <div class="form-group">
+            <label for="housing">Housing Type</label>
+            <select id="housing" name="housing" required>
+              <option value="">Select</option>
+              <option value="hdb">HDB</option>
+              <option value="condo">Condominium</option>
+              <option value="landed">Landed Property</option>
+            </select>
+            <div class="invalid-feedback text-danger">
+              Please select a housing type.
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="form-group">
+            <label for="experience">Pet Ownership Experience</label>
+            <select id="experience" name="experience" required>
+              <option value="">Select</option>
+              <option value="none">No experience</option>
+              <option value="some">Some experience</option>
+              <option value="experienced">Experienced</option>
+            </select>
+            <div class="invalid-feedback text-danger">
+              Please indicate your experience.
+            </div>
+          </div>
+
+        </template>
 
         <!-- Reason -->
         <div class="form-group full-width">
@@ -180,7 +183,7 @@
           <textarea id="reason" name="reason" rows="3" required></textarea>
           <div class="invalid-feedback text-danger">
             Please indicate your reason for adopting the pet.
-          </div> 
+          </div>
         </div>
 
         <!-- Submit -->
@@ -218,95 +221,119 @@
   <script>
     //Function submit form processes the user inputs and shows the appropriate toast message
     //The async keyword allows the function to perform asynchronous operations, such as making network requests or waiting for certain events to occur, without blocking the execution of other code. This is particularly useful when handling form submissions, as it allows the function to wait for a response from the server before proceeding with further actions, such as displaying success or error messages to the user.
-    async function submitForm() {
+    async function loadPets() {
+      const response = await fetch(
+        "http://localhost:8080/pets"
+      );
 
-      // Cancel what the browser normally does when a form is submitted
-      // This allows us to handle the form submission with our own JavaScript code
-      event.preventDefault();
+      const pets = await response.json();
 
-      function isEmpty(value) {
-        return value.trim() === "";
-      }
+      const petSelect = document.getElementById("petName");
 
-      const petName = document.getElementById("petName").value;
-      const fullName = document.getElementById("fullName").value;
-      const contact = document.getElementById("contact").value;
-      const email = document.getElementById("email").value;
-      const address = document.getElementById("address").value;
-      const housing = document.getElementById("housing").value;
-      const experience = document.getElementById("experience").value;
-      const reason = document.getElementById("reason").value;
+      pets.forEach(pet => {
+        const option = document.createElement("option");
 
-      // capture the toast and its body as object
-      const toastElement = document.getElementById("msg-toast");
-      const toastBodyElement = document.getElementById("msg-toast-body");
+        option.value = pet.id;
+        option.textContent = pet.petName;
 
-      // ensure that email is not empty and message is not empty
-      if (
-        isEmpty(petName) ||
-        isEmpty(fullName) ||
-        isEmpty(contact) ||
-        isEmpty(email) ||
-        isEmpty(address) ||
-        isEmpty(housing) ||
-        isEmpty(experience) ||
-        isEmpty(reason)
-      ) {
-        showToast({
-          toastElement,
-          toastBodyElement,
-          bgColor: "bg-danger",
-          msg: "All fields must be filled and selected."
-        });
-        return;
-      }
+        petSelect.appendChild(option);
+      })
 
-      const contactRegex = /^[0-9]{8}$/;
+      document.addEventListener(
+        "DOMContentLoaded",
+        loadPets
+      );
 
-      if (!contactRegex.test(contact)) {
-        showToast({
-          toastElement,
-          toastBodyElement,
-          bgColor: "bg-danger",
-          msg: "Contact number must be 8 digits without spaces."
-        });
-        return;
-      }
+      async function submitForm() {
 
-      if (fullName.length < 3) {
-        showToast({
-          toastElement,
-          toastBodyElement,
-          bgColor: "bg-danger",
-          msg: "Full name must be at least 3 characters."
-        });
-        return;
-      }
+        // Cancel what the browser normally does when a form is submitted
+        // This allows us to handle the form submission with our own JavaScript code
+        event.preventDefault();
 
-      if (reason.length < 10) {
-        showToast({
-          toastElement,
-          toastBodyElement,
-          bgColor: "bg-danger",
-          msg: "Please provide a more detailed reason."
-        });
-        return;
-      }
+        function isEmpty(value) {
+          return value.trim() === "";
+        }
 
-      // email validity check using a regular expression
-      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      if (!emailRegex.test(email)) {
-        showToast({
-          toastElement,
-          toastBodyElement,
-          bgColor: "bg-danger",
-          msg: "Email is not valid."
-        });
+        const petName = document.getElementById("petName").value;
+        const fullName = document.getElementById("fullName").value;
+        const contact = document.getElementById("contact").value;
+        const email = document.getElementById("email").value;
+        const address = document.getElementById("address").value;
+        const housing = document.getElementById("housing").value;
+        const experience = document.getElementById("experience").value;
+        const reason = document.getElementById("reason").value;
 
-        return; // end the function because the user email is invalid, does not match the regular expression, value is false
-      }
+        // capture the toast and its body as object
+        const toastElement = document.getElementById("msg-toast");
+        const toastBodyElement = document.getElementById("msg-toast-body");
 
-      const formData = {
+        // ensure that everything is not empty
+        if (
+          isEmpty(petName) ||
+          isEmpty(fullName) ||
+          isEmpty(contact) ||
+          isEmpty(email) ||
+          isEmpty(address) ||
+          isEmpty(housing) ||
+          isEmpty(experience) ||
+          isEmpty(reason)
+        ) {
+          showToast({
+            toastElement,
+            toastBodyElement,
+            bgColor: "bg-danger",
+            msg: "All fields must be filled and selected."
+          });
+          return;
+        }
+
+        const contactRegex = /^[0-9]{8}$/;
+
+        if (!contactRegex.test(contact)) {
+          showToast({
+            toastElement,
+            toastBodyElement,
+            bgColor: "bg-danger",
+            msg: "Contact number must be 8 digits without spaces."
+          });
+          return;
+        }
+
+        if (fullName.length < 3) {
+          showToast({
+            toastElement,
+            toastBodyElement,
+            bgColor: "bg-danger",
+            msg: "Full name must be at least 3 characters."
+          });
+          return;
+        }
+
+        if (reason.length < 10) {
+          showToast({
+            toastElement,
+            toastBodyElement,
+            bgColor: "bg-danger",
+            msg: "Please provide a more detailed reason."
+          });
+          return;
+        }
+
+        // email validity check using a regular expression
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailRegex.test(email)) {
+          showToast({
+            toastElement,
+            toastBodyElement,
+            bgColor: "bg-danger",
+            msg: "Email is not valid."
+          });
+
+          return; // end the function because the user email is invalid, does not match the regular expression, value is false
+        }
+
+        // Think of it like packing all the form answers into one organized “box” before sending it to the server.
+        const formData = {
           email: email,
           petName: petName,
           fullName: fullName,
@@ -315,114 +342,121 @@
           housing: housing,
           experience: experience,
           reason: reason,
-      };
+        };
 
-      //2. Exeception handling using a try/catch block
-      try {
+        //2. Exeception handling using a try/catch block
+        try {
 
-        // send the form data asynchronously
-        // wait for the response before proceeding with the rest of the code below
-        // pause here and wait for the fetch operation to complete and return a response before moving on to the next lines of code. This allows us to handle the response from the server appropriately, such as checking if the submission was successful or if there were any errors, before proceeding with further actions like displaying messages to the user or redirecting them to another page.
-        // await only works on promises, and the fetch function returns a promise that resolves to the response of the request. 
-        const response = await fetch("https://forminit.com/f/3vypy19onq8", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+          // send the form data asynchronously
+          // wait for the response before proceeding with the rest of the code below
+          // pause here and wait for the fetch operation to complete and return a response before moving on to the next lines of code. This allows us to handle the response from the server appropriately, such as checking if the submission was successful or if there were any errors, before proceeding with further actions like displaying messages to the user or redirecting them to another page.
+          // await only works on promises, and the fetch function returns a promise that resolves to the response of the request. 
+          const response = await fetch("http://localhost:8080/adoption/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
 
-        // Nothing else happens until the response arrives
-        // if response is ok, then inform the user that the form is successfully sent and create a delay before sending the user to the homepage
-        // else show the user the appropriate messge where the form could not be sent
-        if (response.ok) {
+          // Nothing else happens until the response arrives
+          // if response is ok, then inform the user that the form is successfully sent and create a delay before sending the user to the homepage
+          // else show the user the appropriate messge where the form could not be sent
+          if (response.ok) {
 
-          // Inform the user that form is successfully sent
+            // Inform the user that form is successfully sent
+            showToast({
+              toastElement,
+              toastBodyElement,
+              bgColor: "bg-success",
+              msg: "Message received. Redirecting to profile..."
+            });
+
+            // Create a delay before sending the user to the profile page by using an asynchronous sleep function that returns a promise that resolves after a specified delay (in milliseconds). This allows us to pause the execution of the code for a certain amount of time before proceeding with the next steps, such as redirecting the user to the homepage after showing a success message. 
+            const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
+            // invoke the sleep arrow function
+            // The code execution will pause here for 4000 milliseconds (4 seconds) before proceeding to the next line, which is redirecting the user to the homepage. This allows the user to see the success message for a brief period before being redirected.
+            await sleep(4000);
+
+            // Instruct the browser to redirect back to the profile page
+            // const url = "./profile.html";
+            // window.location = url;
+
+          } else {
+            // 'throw': “Stop everything — something went wrong.”
+            // Inform the user that form is unsuccessfully sent
+            // Once a throw is executed it looks for the nearest catch block to handle the error. In this case, it will jump to the catch block that is designed to handle any errors that occur during the form submission process. The error message "Message not sent." will be passed to the catch block, where it can be used to display an appropriate message to the user or take other actions as needed.
+            throw new Error("Message not sent.");
+          }
+
+          // try...catch prevents crashes by handling errors and showing user-friendly feedback
+        } catch (error) {
+
+          // Preparing the error message to be displayed in the toast
+          let errMsg = error.message;
+
+          if (errMsg != "Message not sent.")
+            errMsg = "An error occured";
+
+          //catch errors when the form could not be sent
           showToast({
             toastElement,
             toastBodyElement,
-            bgColor: "bg-success",
-            msg: "Message received. Redirecting to profile..."
+            bgColor: "bg-danger",
+            msg: errMsg + " Please try again."
           });
 
-          // Create a delay before sending the user to the homepage by using an asynchronous sleep function that returns a promise that resolves after a specified delay (in milliseconds). This allows us to pause the execution of the code for a certain amount of time before proceeding with the next steps, such as redirecting the user to the homepage after showing a success message. 
-          const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
-          // invoke the sleep arrow function
-          // The code execution will pause here for 4000 milliseconds (4 seconds) before proceeding to the next line, which is redirecting the user to the homepage. This allows the user to see the success message for a brief period before being redirected.
-          await sleep(4000);
-
-          // Instruct the browser 
-          const url = "./profile.html";
-          window.location = url;
-
-        } else {
-          // Inform the user that form is unsuccessfully sent
-          // Once a throw is executed it looks for the nearest catch block to handle the error. In this case, it will jump to the catch block that is designed to handle any errors that occur during the form submission process. The error message "Message not sent." will be passed to the catch block, where it can be used to display an appropriate message to the user or take other actions as needed.
-          throw new Error("Message not sent.");
         }
+      }
+      //This exists in Internal JS because HTML only creates the EMPTY toast structure. This function controls and updates it dynamically.
+      //Function showToast responds to submitForm on the message to display
+      function showToast({
+        toastElement,
+        toastBodyElement,
+        bgColor,
+        msg }) {
 
-        // try...catch prevents crashes by handling errors and showing user-friendly feedback
-      } catch (error) {
+        const toastEl = toastElement;
+        const toastBody = toastBodyElement;
 
-        // Preparing the error message to be displayed in the toast
-        let errMsg = error.message;
+        //Manipulate the toastElement (msg-toast) and the toastBodyElement (msg-toast-body)
+        toastEl.classList.add("text-white")
+        toastEl.classList.remove("bg-danger")
+        toastEl.classList.remove("bg-success")
+        toastEl.classList.add(bgColor);
+        toastBody.textContent = msg;
 
-        if (errMsg != "Message not sent.")
-          errMsg = "An error occured";
-
-        //catch errors when the form could not be sent
-        showToast({
-          toastElement,
-          toastBodyElement,
-          bgColor: "bg-danger",
-          msg: errMsg + "Please try again."
-        });
-
+        // Create a new instance of the Bootstrap Toast component using the toastElement and show the toast to the user. This will display the toast message on the screen with the appropriate styling based on the bgColor parameter passed to the function.
+        const toast = new bootstrap.Toast(toastEl); // Create a new instance of the Bootstrap Toast component using the toastElement
+        toast.show(); // Show the toast to the user
 
       }
-    }
-    //Function showToast responds to submitForm on the message to display
-    function showToast({
-      toastElement,
-      toastBodyElement,
-      bgColor,
-      msg }) {
 
-      const toastEl = toastElement;
-      const toastBody = toastBodyElement;
+      // IIFE function to validate each input field within the contact form
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (() => {
+        'use strict'
 
-      //Manipulate the toastElement (msg-toast) and the toastBodyElement (msg-toast-body)
-      toastEl.classList.add("text-white")
-      toastEl.classList.remove("bg-danger")
-      toastEl.classList.remove("bg-success")
-      toastEl.classList.add(bgColor);
-      toastBody.textContent = msg;
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
 
-      // Create a new instance of the Bootstrap Toast component using the toastElement and show the toast to the user. This will display the toast message on the screen with the appropriate styling based on the bgColor parameter passed to the function.
-      const toast = new bootstrap.Toast(toastEl); // Create a new instance of the Bootstrap Toast component using the toastElement
-      toast.show(); // Show the toast to the user
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            //if (!form.checkValidity()): “If the form is NOT valid…”
+            if (!form.checkValidity()) {
+              //“Do NOT submit the form.”
+              event.preventDefault()
+              //“Stop this event from spreading to parent elements.”
+              event.stopPropagation()
+            }
 
-    }
-
-    // IIFE function to validate each input field withing the contact form
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-      'use strict'
-
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-        }, false)
-      })
-    })();
+            //Before submit:<form class="needs-validation">. After invalid submit:<form class="needs-validation was-validated">
+            //Without:was-validated. Bootstrap won't show:<div class="invalid-feedback">
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })();
   </script>
 </body>
 
