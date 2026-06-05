@@ -18,33 +18,35 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     const token = isAuthenticated();   
     
     const profileContainer = document.getElementById("profileContainer");
-    const profileNameContainer = document.getElementById("profileNameContainer");
-    const loginLink = document.getElementById("loginLink");
-    const logoutLink = document.getElementById("logoutLink");
-    
+    const dropdownMenu = document.querySelectorAll(".dropdown-menu .dropdown-item");
+    const dropdownMenuDivider = document.querySelector(".dropdown-menu .dropdown-divider");
+
     if(!token){
         // User is not logged in
-        profileContainer.classList.add("d-none");
-        loginLink.classList.remove("d-none");
-        logoutLink.classList.add("d-none");
-        
+        dropdownMenu[0].classList.remove("d-none");     // show Login
+        dropdownMenu[1].classList.remove("d-none");     // show Signup
+        dropdownMenu[2].classList.add("d-none");        // hide Profile
+        dropdownMenu[3].classList.add("d-none");        // hide Signout
+        dropdownMenuDivider.classList.add('d-none');    // hide the divider
+        profileContainer.textContent = "";
+        profileContainer.classList.add("d-none");       // hider user profile nameX
     }
     else{
         // User is logged in
+        dropdownMenu[0].classList.add("d-none");        // hide Login
+        dropdownMenu[1].classList.add("d-none");        // hide Signup
+        dropdownMenu[2].classList.remove("d-none");     // show Profile
+        dropdownMenu[3].classList.remove("d-none");     // show Signout
+        dropdownMenuDivider.classList.remove('d-none'); // show the divider
+        
         const user = decodeUser(token);
-        profileNameContainer.textContent = user.username;
-        loginLink.classList.add("d-none");
-        logoutLink.classList.remove("d-none");
+        profileContainer.textContent = user.email;
+        profileContainer.classList.remove("d-none");   // hide user profile nameX
+        
        
         // set the logout function
-        logoutLink.addEventListener("click", () => {
+        dropdownMenu[3].addEventListener("click", () => {   // enable signout button so sign out
           logout();
         })
-
-        // set the cursor for the profile to navigate to profile.html
-        profileContainer.setAttribute("role", "button");
-        profileContainer.addEventListener("click", () => {
-            window.location = "profile.html";
-        });
     }
 });

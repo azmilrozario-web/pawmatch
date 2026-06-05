@@ -29,7 +29,7 @@
 <body class="custom-bg-section vh-100">
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img class="logoimage" src="./imgs/logo.svg" alt="Logo">
                 <span class="fw-bold text-white logotext">
                     PawMatch
@@ -54,15 +54,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person-circle fs-4"></i>
+                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer" class="fs-6g px-1 fw-lighter"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Log in</a></li>
-                            <li><a class="dropdown-item" href="#">Signup</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><a class="dropdown-item" href="login.html">Log in</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Signup</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
                     </li>
@@ -161,6 +159,9 @@
 
     <!-- !! Import the data and the script to dynamically list the pets -->
     <script src="./script/components/Spinner.js"></script>
+    <script src="script/const.js"></script>
+    <script src="script/auth.js"></script>
+    <script src="script/loader.js"></script>
     <script src="./script/data.js"></script>
     <script src="./script/homelisting.js"></script>
 
