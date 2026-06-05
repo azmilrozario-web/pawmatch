@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
           !pet.adoptionStatus ? "AVAILABLE" : "ADOPTED";
 
         adoptBtn.onclick = () => {
-          window.location.href = `form.html?pet=${pet.id}`;
+          window.location.href = `application.html?pet=${pet.id}`;
         };
       }
     }

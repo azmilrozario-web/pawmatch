@@ -5,13 +5,20 @@ class Spinner{
         this.spinner = null;
     }
 
-    createSpinner(){
-        this.spinner = document.createElement("div");
-        this.spinner.className = "spinner-border spinner-border-sm d-none";
-        this.spinner.setAttribute("role", "status");
-        this.element.prepend(this.spinner);
-        return;
+    createSpinner(elementId = null){
+
+    if(elementId){
+        this.element = document.getElementById(elementId);
     }
+
+    this.spinner = document.createElement("div");
+    this.spinner.className = "spinner-border spinner-border-sm d-none";
+    this.spinner.setAttribute("role", "status");
+
+    this.element.prepend(this.spinner);
+
+    return;
+}
 
     displaySpinner(status=false){
         if(status)
