@@ -2,63 +2,85 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-up</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Import Bootstrap 5's utility classes and components via its CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Import fonts awesome stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+    <!-- Import custom stylesheet -->
+    <link rel="stylesheet" href="./home.css">
 </head>
+<!-- ! Homepage -->
 
-<body class="bg-secondary bg-opacity-50">
+<!-- Navigation bar -->
 
-    <!-- toast -->
-    <!-- https://getbootstrap.com/docs/5.3/components/toasts/ -->
-    <div class="toast-container p-3 top-0 start-50 translate-middle-x">
-        <!-- Put toasts within -->
-        <div id="msg-toast" class="toast align-items-center mt-2" role="alert" aria-live="assertive" aria-atomic="true"
-            data-bs-autohide="true" data-bs-delay="4000">
-            <div class="d-flex">
-                <div id="msg-toast-body" class="toast-body">
-                    <!-- Message to be added here -->
-                </div>
-                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+<body class="custom-bg-section vh-100">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img class="logoimage" src="./imgs/logo.svg" alt="Logo">
+                <span class="fw-bold text-white logotext">
+                    PawMatch
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer"
+                                class="fs-6g px-1 fw-lighter"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Log in</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Signup</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex ps-2 pe-5" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
             </div>
-        </div>
-    </div>
-
-    <!-- User navigation -->
-    <header class="container-fluid py-3">
-        <div class="d-flex justify-content-end align-items-center">
-            <nav class="d-flex gap-5 me-5">
-                <a href="index.html" class="nav-link fs-4 text-dark">Home</a>
-                <a href="#" class="nav-link fs-4 text-dark">About</a>
-                <a href="#" class="nav-link fs-4 text-dark">Contact</a>
-                <a href="login.html" id="loginLink" class="nav-link fs-4 text-dark">Sign-in</a>
-                <a href="#" id="logoutLink" class="nav-link fs-4 text-dark">Logout</a>
-            </nav>
-
-            <!-- Profile Container -->
-            <div id="profileContainer" class="text-center pe-4">
-                <div class="bg-secondary-subtle rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style="width: 40px; height: 40px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-person-fill"
-                        viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                    </svg>
-                </div>
-                <p id="profileNameContainer" class="mb-0 fw-semibold pt-2" style="font-size: 0.8rem;">Welcome User</p>
-            </div>
-        </div>
-    </header>
+    </nav>
 
     <!-- Container for Update form -->
     <div class="container w-50 bg-secondary-subtle p-5 rounded-5 border border-light-subtle shadow-sm">
 
         <div>
-            <h1 class="display-4 text-secondary fw-lighter text-center">
-                Admin Dashboard
-            </h1>
+            <h2 class="mb-3 fw-bold text-center">Admin Dashboard</h2>
+            <hr class="w-25 mx-auto mb-5 border-dark border-2 opacity-100">
         </div>
 
         <form id="formUpdate" class="needs-validation" novalidate>
@@ -93,6 +115,26 @@
                         Pet Management
                     </h3>
 
+                    <div id="addPetForm" class="mb-4">
+
+                        <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name">
+
+                        <select id="petType" class="form-select mb-2">
+
+                            <option value="">Select Type</option>
+                            <option value="DOG">DOG</option>
+                            <option value="CAT">CAT</option>
+                            <option value="HAMSTER">HAMSTER</option>
+                            <option value="TERRAPIN">TERRAPIN</option>
+
+                        </select>
+
+                        <button id="savePetBtn" type="button" class="btn btn-success">
+                            Add Pet
+                        </button>
+
+                    </div>
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -116,6 +158,15 @@
     </div>
     <!-- End of Container for Signup form -->
 
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
+    </footer>
+
     <!-- Import Bootstrap 5's javascript library via its CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -138,6 +189,46 @@
             const toastBodyElement = document.getElementById("msg-toast-body");     // Get the toast element - msg-toast-body
 
             const updateStatus = window.location.href.match(/updated=([^&]*)/);                 // Check if querystring updated is found
+
+            const savePetBtn =
+                document.getElementById("savePetBtn");
+
+            savePetBtn.addEventListener("click", async () => {
+
+                const token = isAuthenticated();
+
+                const petName =
+                    document.getElementById("petName").value;
+
+                const petType =
+                    document.getElementById("petType").value;
+
+                const petData = {
+                    name: petName,
+                    animalType: petType
+                };
+
+                const response = await fetch(
+                    "http://localhost:8080/admin/add/pet",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(petData)
+                    }
+                );
+
+                console.log(response.status);
+
+                if (response.status === 201) {
+                    window.location.reload();
+                } else {
+                    showToast({ toastElement, toastBodyElement, bgColor: "danger", msg: "Unable to add pet. Try again." }); // If update fetch, provide feedback
+                }
+
+            });
 
             if (updateStatus !== null)                                                           // If querystring is present, (profile is updated)
             {
@@ -186,6 +277,8 @@
                 </tr>
                 `;
 
+                console.log("Before applications fetch");
+
                 let response = await fetch("http://localhost:8080/admin/all/applications", {
                     method: "GET",
                     headers: {
@@ -193,11 +286,35 @@
                     },
                 });
 
-                if (response.ok) {
+                console.log("Applications status:", response.status);
 
-                    const applications = await response.json();
+                const applications = await response.json();
 
-                    console.log(applications);
+                console.log("Applications data:", applications);
+
+                if (response.status === 404) {
+
+                    console.log("No applications found.");
+
+                    applicationTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            No applications found
+                        </td>
+                    </tr>
+                    `;
+
+                    response = null;
+                }
+                else if (response.ok) {
+
+                    console.log("Applications loaded");
+
+                    applications.forEach((application) => {
+
+                        console.log(application);
+
+                    });
 
                     applicationTableBody.innerHTML = "";
 
@@ -293,33 +410,52 @@
 
                     });
 
+                }
 
-                    let petResponse = await fetch(
-                        "http://localhost:8080/admin/all/pets",
-                        {
-                            method: "GET",
-                            headers: {
-                                "Authorization": `Bearer ${token}`,
-                            },
-                        }
-                    );
+                else {
 
-                    if (petResponse.ok) {
+                    console.log("No applications found.");
 
-                        const pets = await petResponse.json();
+                    applicationTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                No applications found
+                            </td>
+                        </tr>
+                        `;
 
-                        console.log(pets);
+                }
 
-                        petTableBody.innerHTML = "";
+                console.log("Loading pets...");
 
-                        pets.forEach((pet) => {
+                let petResponse = await fetch(
+                    "http://localhost:8080/admin/all/pets",
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                        },
+                    }
+                );
 
-                            petTableBody.innerHTML += `
+                if (petResponse.ok) {
+
+                    const pets = await petResponse.json();
+
+                    console.log("Pets loaded:", pets);
+
+                    petTableBody.innerHTML = "";
+
+                    pets.forEach((pet) => {
+
+                        petTableBody.innerHTML += `
                         <tr>
                             <td>${pet.id}</td>
                             <td>${pet.name}</td>
                             <td>${pet.animalType}</td>
-                            <td>${pet.adoptionStatus}</td>
+                            <td>
+                                ${pet.adoptionStatus ? "Adopted" : "Available"}
+                            </td>
                             <td>
                                 <button
                                     class="btn btn-danger btn-sm deletePetBtn"
@@ -329,53 +465,54 @@
                             </td>
                         </tr>
                         `;
-                        });
+                    });
 
-                        const deletePetButtons =
-                            document.querySelectorAll(".deletePetBtn");
+                    const deletePetButtons =
+                        document.querySelectorAll(".deletePetBtn");
 
-                        console.log(deletePetButtons);
+                    console.log(deletePetButtons);
 
-                        deletePetButtons.forEach((button) => {
+                    deletePetButtons.forEach((button) => {
 
-                            button.addEventListener("click", async () => {
+                        button.addEventListener("click", async () => {
 
-                                try {
+                            try {
 
-                                    const petId = button.dataset.id;
+                                const petId = button.dataset.id;
 
-                                    alert("Delete pet id: " + petId);
+                                alert("Delete pet id: " + petId);
+                                console.log("Deleting pet:", petId);
 
-                                    const deleteResponse = await fetch(
-                                        `http://localhost:8080/admin/pet/${petId}`,
-                                        {
-                                            method: "DELETE",
-                                            headers: {
-                                                "Authorization": `Bearer ${token}`
-                                            }
+                                const deleteResponse = await fetch(
+                                    `http://localhost:8080/admin/pet/${petId}`,
+                                    {
+                                        method: "DELETE",
+                                        headers: {
+                                            "Authorization": `Bearer ${token}`
                                         }
-                                    );
+                                    }
+                                );
 
-                                    alert("Status: " + deleteResponse.status);
+                                console.log("Delete status:", deleteResponse.status);
 
-                                } catch (error) {
+                                return;
 
-                                    alert(error.message);
+                                alert("Status: " + deleteResponse.status);
 
-                                    console.log(error);
+                            } catch (error) {
 
-                                }
+                                console.error("DELETE ERROR:", error.message);
+                                console.error(error);
 
-                            });
+                                alert(error.message);
+
+                            }
 
                         });
 
-                    }
+                    });
 
-                } else {
-                    throw new Error("Unable to fetch applications.");
                 }
-
             } catch (error) {
                 showToast({ toastElement, toastBodyElement, bgColor: "danger", msg: error.message }); // If update fetch, provide feedback
             }
