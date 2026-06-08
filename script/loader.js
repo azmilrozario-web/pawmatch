@@ -44,6 +44,16 @@ document.addEventListener("DOMContentLoaded", async (event) => {
         dropdownMenuDivider.classList.remove('d-none'); // show the divider
 
         const user = decodeUser(token);
+        const adminNavItem =
+            document.getElementById("adminNavItem");
+
+        const adminStatus =
+            user.roles.some(role =>
+                role.authority === "ADMIN");
+
+        if (adminStatus && adminNavItem) {
+            adminNavItem.classList.remove("d-none");
+        }
         profileContainer.textContent = user.email;
         profileContainer.classList.remove("d-none");   // hide user profile nameX
 

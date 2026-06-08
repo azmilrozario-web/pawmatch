@@ -51,6 +51,12 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">About</a>
                     </li>
+                    <li class="nav-item d-none" id="adminNavItem">
+                        <a class="nav-link active" href="admin.html">
+                            Admin
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -83,66 +89,66 @@
             <hr class="w-25 mx-auto mb-5 border-dark border-2 opacity-100">
         </div>
 
-    <form id="formLogin" class="needs-validation" novalidate>
-        <!-- Email input -->
-        <div class="row justify-content-center pb-2">
-            <div class="col-10">
-                <label class="form-label text-secondary fw-normal" for="txtEmail">Email:</label>
-                <input type="email" id="txtEmail" class="form-control" required />
-                <div class="invalid-feedback text-danger">
-                    Please enter a valid email.
+        <form id="formLogin" class="needs-validation" novalidate>
+            <!-- Email input -->
+            <div class="row justify-content-center pb-2">
+                <div class="col-10">
+                    <label class="form-label text-secondary fw-normal" for="txtEmail">Email:</label>
+                    <input type="email" id="txtEmail" class="form-control" required />
+                    <div class="invalid-feedback text-danger">
+                        Please enter a valid email.
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Password input -->
-        <div class="row justify-content-center pt-2">
-            <div class="col-10">
-                <label class="form-label text-secondary fw-normal" for="txtPassword">Password:</label>
-                <input type="password" id="txtPassword" class="form-control" required />
-                <div class="invalid-feedback text-danger">
-                    Please enter a password.
+            <!-- Password input -->
+            <div class="row justify-content-center pt-2">
+                <div class="col-10">
+                    <label class="form-label text-secondary fw-normal" for="txtPassword">Password:</label>
+                    <input type="password" id="txtPassword" class="form-control" required />
+                    <div class="invalid-feedback text-danger">
+                        Please enter a password.
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Submit button -->
-        <div class="d-flex justify-content-center pt-4">
-            <button type="submit" id="btnLogin" class="btn btn-primary btn-block ms-2">
-                Login
-            </button>
-            <button type="reset" id="btnReset" class="btn btn-secondary btn-block ms-2">Reset</button>
-        </div>
-    </form>
+            <!-- Submit button -->
+            <div class="d-flex justify-content-center pt-4">
+                <button type="submit" id="btnLogin" class="btn btn-primary btn-block ms-2">
+                    Login
+                </button>
+                <button type="reset" id="btnReset" class="btn btn-secondary btn-block ms-2">Reset</button>
+            </div>
+        </form>
 
         <!-- End of Container for login form -->
 
-    <!-- Allow the user to go the registration page -->
-    <div>
-        <div class="text-center p-3">
-            <a class="text-primary text-decoration-underline" href="signup.html">Not registered? Sign up here.</a>
+        <!-- Allow the user to go the registration page -->
+        <div>
+            <div class="text-center p-3">
+                <a class="text-primary text-decoration-underline" href="signup.html">Not registered? Sign up here.</a>
+            </div>
         </div>
-    </div>
 
     </div>
     <!-- End of Allow the user to go the registration page -->
-     <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
             <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
         </ul>
-        
+
         <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
     </footer>
 

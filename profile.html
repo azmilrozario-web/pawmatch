@@ -51,16 +51,25 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">About</a>
                     </li>
+                    <li class="nav-item d-none" id="adminNavItem">
+                        <a class="nav-link active" href="admin.html">
+                            Admin
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer" class="fs-6g px-1 fw-lighter"></span>
+                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer"
+                                class="fs-6g px-1 fw-lighter"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="login.html">Log in</a></li>
                             <li><a class="dropdown-item" href="signup.html">Signup</a></li>
                             <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
                     </li>
@@ -282,7 +291,7 @@
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
 
-        <!-- Internal Custom Script -->
+    <!-- Internal Custom Script -->
     <script>
 
         document.addEventListener("DOMContentLoaded", async (event) => {
@@ -388,7 +397,7 @@
             const toastElement = document.getElementById("msg-toast");              // Get the toast element - msg-toast
             const toastBodyElement = document.getElementById("msg-toast-body");     // Get the toast element - msg-toast-body
 
-            if (isEmpty(firstName.value) || isEmpty(lastName.value) || isEmpty(email.value) || isEmpty(address.value) || isEmpty(housingType.value) || isEmpty(experienceLevel.value) ) {     // Trap empty inputs for txtEmail and userName - isEmpty()
+            if (isEmpty(firstName.value) || isEmpty(lastName.value) || isEmpty(email.value) || isEmpty(address.value) || isEmpty(housingType.value) || isEmpty(experienceLevel.value)) {     // Trap empty inputs for txtEmail and userName - isEmpty()
                 showToast({
                     toastElement,
                     toastBodyElement,

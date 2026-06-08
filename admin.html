@@ -51,6 +51,12 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">About</a>
                     </li>
+                    <li class="nav-item d-none" id="adminNavItem">
+                        <a class="nav-link active" href="admin.html">
+                            Admin
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -98,6 +104,7 @@
                                 <th>ID</th>
                                 <th>User</th>
                                 <th>Pet</th>
+                                <th style="width:35%;">Reason</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -150,9 +157,76 @@
                         </tbody>
                     </table>
 
+                    <hr>
+
+                    <h2 class="text-center mt-5">User Management</h2>
+
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="userTableBody">
+
+                        </tbody>
+                    </table>
+
+                    <div class="mb-4">
+
+                        <input type="hidden" id="editingUserId">
+
+                        <input type="text" id="firstName" class="form-control mb-2" placeholder="First Name">
+
+                        <input type="text" id="lastName" class="form-control mb-2" placeholder="Last Name">
+
+                        <input type="email" id="email" class="form-control mb-2" placeholder="Email">
+
+                        <input type="text" id="phone" class="form-control mb-2" placeholder="Phone">
+
+                        <select id="housingType" class="form-select mb-2">
+
+                            <option value="">Select Housing Type</option>
+                            <option value="HDB">HDB</option>
+                            <option value="CONDO">CONDO</option>
+                            <option value="LANDED">LANDED</option>
+
+                        </select>
+
+                        <select id="experienceLevel" class="form-select mb-2">
+
+                            <option value="">Select Experience Level</option>
+                            <option value="NONE">NONE</option>
+                            <option value="BEGINNER">BEGINNER</option>
+                            <option value="INTERMEDIATE">INTERMEDIATE</option>
+                            <option value="ADVANCED">ADVANCED</option>
+
+                        </select>
+
+                        <input type="text" id="address" class="form-control mb-2" placeholder="Address">
+
+                        <select id="role" class="form-select mb-2">
+
+                            <option value="USER">USER</option>
+                            <option value="ADMIN">ADMIN</option>
+
+                        </select>
+
+                        <button id="updateUserBtn" class="btn btn-success mt-3">
+                            Update User
+                        </button>
+
+                    </div>
 
                 </div>
             </div>
+
         </form>
 
     </div>
@@ -259,6 +333,9 @@
                 const petTableBody =
                     document.getElementById("petTableBody");
 
+                const userTableBody =
+                    document.getElementById("userTableBody");
+
                 if (!token) {
                     window.location = "index.html";
                 }
@@ -322,10 +399,11 @@
 
                         applicationTableBody.innerHTML += `
                         <tr>
-                            <td>${application.id}</td>
-                            <td>${application.user.firstName}</td>
-                            <td>${application.pet.name}</td>
-                            <td>${application.approvalStatus}</td>
+                             <td>${application.id}</td>
+                                <td>${application.user.firstName}</td>
+                                <td>${application.pet.name}</td>
+                                <td>${application.reason}</td>
+                                <td>${application.approvalStatus}</td>
                             <td>
                             <button
                                 class="btn btn-success btn-sm approveBtn"
@@ -513,6 +591,190 @@
                     });
 
                 }
+
+                console.log("Loading users...");
+
+                let userResponse = await fetch(
+                    "http://localhost:8080/admin/all",
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                console.log("Users status:", userResponse.status);
+
+                if (userResponse.ok) {
+
+                    const users = await userResponse.json();
+
+                    console.log("Users loaded:", users);
+
+                    console.log(users[0]);
+
+                    userTableBody.innerHTML = "";
+
+                    users.forEach((user) => {
+
+                        userTableBody.innerHTML += `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.firstName}</td>
+                            <td>${user.email}</td>
+                            <td>${user.role}</td>
+                            <td>
+                            <button
+                            type="button"
+                            class="btn btn-primary btn-sm editUserBtn"
+                            data-id="${user.id}">
+                            Edit
+                        </button>
+
+                            <button
+                            type="button"
+                            class="btn btn-danger btn-sm deleteUserBtn"
+                            data-id="${user.id}">
+                            Delete
+                        </button>
+                        </td>
+                        </tr>
+                        `;
+
+                    });
+
+                    const deleteUserButtons =
+                        document.querySelectorAll(".deleteUserBtn");
+
+                    console.log(deleteUserButtons);
+
+                    deleteUserButtons.forEach((button) => {
+
+                        button.addEventListener("click", async function () {
+
+                            const userId = this.dataset.id;
+
+                            document.getElementById("editingUserId").value =
+                                userId;
+
+                            console.log(
+                                document.getElementById("editingUserId").value
+                            );
+
+                            console.log("CLICKED");
+                            console.log("USER ID:", userId);
+
+                            const response = await fetch(
+                                `http://localhost:8080/admin/${userId}`,
+                                {
+                                    method: "DELETE",
+                                    headers: {
+                                        "Authorization": `Bearer ${token}`
+                                    }
+                                }
+                            );
+
+                            console.log("DELETE STATUS:", response.status);
+
+                        });
+
+                    });
+
+                    const editUserButtons =
+                        document.querySelectorAll(".editUserBtn");
+
+                    console.log(editUserButtons);
+
+                    editUserButtons.forEach((button) => {
+
+                        button.addEventListener("click", () => {
+
+                            console.log("EDIT CLICKED");
+
+                            const userId = button.dataset.id;
+
+                            const selectedUser =
+                                users.find(user => user.id == userId);
+
+                            console.log(selectedUser);
+
+                            document.getElementById("firstName").value =
+                                selectedUser.firstName;
+
+                            document.getElementById("lastName").value =
+                                selectedUser.lastName;
+
+                            document.getElementById("email").value =
+                                selectedUser.email;
+
+                            document.getElementById("phone").value =
+                                selectedUser.phone || "";
+
+                            document.getElementById("housingType").value =
+                                selectedUser.housingType || "";
+
+                            document.getElementById("experienceLevel").value =
+                                selectedUser.experienceLevel || "";
+
+                            document.getElementById("address").value =
+                                selectedUser.address || "";
+
+                            document.getElementById("role").value =
+                                selectedUser.role || "USER";
+
+                            console.log("FORM FILLED");
+
+                        });
+
+                    });
+
+                    const updateUserBtn =
+                        document.getElementById("updateUserBtn");
+
+                    console.log("Update button found:", updateUserBtn);
+
+                    updateUserBtn.addEventListener("click", async () => {
+
+                        console.log("UPDATE CLICKED");
+
+                        const userId =
+                            document.getElementById("editingUserId").value;
+
+                        const updateData = {
+
+                            firstName:
+                                document.getElementById("firstName").value,
+
+                            lastName:
+                                document.getElementById("lastName").value,
+
+                            email:
+                                document.getElementById("email").value,
+
+                            phone:
+                                document.getElementById("phone").value,
+
+                            housingType:
+                                document.getElementById("housingType").value,
+
+                            experienceLevel:
+                                document.getElementById("experienceLevel").value,
+
+                            address:
+                                document.getElementById("address").value,
+
+                            role:
+                                document.getElementById("role").value
+
+                        };
+
+                        console.log(updateData);
+
+                    });
+
+                }
+
             } catch (error) {
                 showToast({ toastElement, toastBodyElement, bgColor: "danger", msg: error.message }); // If update fetch, provide feedback
             }

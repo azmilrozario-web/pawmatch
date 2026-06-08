@@ -51,16 +51,25 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">About</a>
                     </li>
+                    <li class="nav-item d-none" id="adminNavItem">
+                        <a class="nav-link active" href="admin.html">
+                            Admin
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer" class="fs-6g px-1 fw-lighter"></span>
+                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer"
+                                class="fs-6g px-1 fw-lighter"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="login.html">Log in</a></li>
                             <li><a class="dropdown-item" href="signup.html">Signup</a></li>
                             <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
                     </li>
@@ -74,7 +83,7 @@
 
     <!-- Hero Section -->
 
-    <div class="position-relative text-center overflow-hidden" style="min-height: 500px;">
+    <div id="heroBanner" class="position-relative text-center overflow-hidden" style="min-height: 500px;">
         <img src="imgs/priscilla-du-preez-qtkpOxCpl0Y-unsplash.jpg" class="position-absolute top-0 start-0 w-100 h-100"
             style="object-fit: cover; object-position: center 30%;" alt="Example image" loading="lazy">
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.30);"></div>
@@ -173,5 +182,20 @@
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
 </body>
+
+<script>
+
+    const token = isAuthenticated();
+
+    if (token) {
+
+        const heroBanner =
+            document.getElementById("heroBanner");
+
+        heroBanner.classList.add("d-none");
+
+    }
+
+</script>
 
 </html>
