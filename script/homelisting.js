@@ -71,9 +71,8 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       if (pet) {
         appModalTitle.textContent = pet.name;
         appModalImage.src = pet.imageUrl;
-        appModalType.textContent = pet.animalType;
-        appModalAdoptionStatus.textContent =
-          !pet.adoptionStatus ? "AVAILABLE" : "ADOPTED";
+        appModalType.textContent = `${pet.animalType.charAt(0).toUpperCase() + pet.animalType.slice(1).toLowerCase()}`;
+        appModalAdoptionStatus.textContent = !pet.adoptionStatus ? "Available" : "Adopted";
 
         adoptBtn.onclick = () => {
           window.location.href = `application.html?pet=${pet.id}`;
@@ -114,7 +113,7 @@ function createCard(item) {
   animalTypeLabel.textContent = "Type: "
   animalTypeLabel.classList.add("fw-bolder");
   const animalTypeText = document.createElement("span");
-  animalTypeText.textContent = `${item.animalType}`;
+  animalTypeText.textContent = `${item.animalType.charAt(0).toUpperCase() + item.animalType.slice(1).toLowerCase()}`;
   animalType.append(animalTypeLabel, animalTypeText);
 
   // !! 4.2. Create the Subtitle (adoptionStatus)

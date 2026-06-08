@@ -18,3 +18,4 @@ const _ENDPOINT_REGISTER = _HOST + _PORT + "/auth/api/signup";
 const _ENDPOINT_LOGIN = _HOST + _PORT + "/auth/api/signin";
 const _ENDPOINT_PROFILE = _HOST + _PORT + "/restricted/profile";
 const _ENDPOINT_UPDATEPROFILE = _HOST + _PORT + "/restricted/updateprofile";
+const _PUBLIC_ENDPOINT_GETPETBYID = _HOST + _PORT + "/public/api/pet";

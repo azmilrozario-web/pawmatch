@@ -102,13 +102,39 @@
     </nav>
 
     <!-- Container for Update form -->
-    <div class="container w-50 bg-secondary-subtle p-5 rounded-5 border border-light-subtle shadow-sm">
+    <div class="container w-50 bg-secondary-subtle mt-4 p-5 rounded-2 rounded-4 shadow-sm">
 
         <div>
             <h2 class="mb-3 fw-bold text-center">Adoption Application</h2>
             <hr class="w-25 mx-auto mb-5 border-dark border-2 opacity-100">
         </div>
 
+        <!-- Show the Pet Information -->
+         <div class="row justify-content-center pb-3">
+            <div class="col-10 border border-2"> 
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center py-2"> 
+                    <svg aria-hidden="true" class="bd-placeholder-img " height="96" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
+                        <img id="applicationPetImgUrl" class="card-img-top rounded-4" alt="undefined" />
+                    </svg> 
+                    <div class="col-lg-8 ms-4"> 
+                        <h6>
+                            <span class="fw-bolder">Name: </span>
+                            <span id="applicationPetName"></span>
+                        </h6> 
+                        <h6>
+                            <span class="fw-bolder">Type: </span>
+                            <span id="applicationPetType"></span>
+                        </h6>
+                        <h6>
+                            <span class="fw-bolder">Adoption Status: </span>
+                            <span id="applicationPetStatus"></span>
+                        </h6>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+
+        <!-- Submit the reason -->
         <form id="formUpdate" class="needs-validation" novalidate>
 
             <div class="row justify-content-center pb-3">
@@ -135,17 +161,6 @@
 
     </div>
     <!-- End of Container for Signup form -->
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
@@ -172,6 +187,25 @@
     <script>
 
         document.addEventListener("DOMContentLoaded", async (event) => {
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const pet = urlParams.get("pet");
+
+            const response = await fetch(`${_PUBLIC_ENDPOINT_GETPETBYID}/${pet}`, {
+                method: "GET"
+            })
+
+            const result = await response.json();
+
+            const applicationPetName = document.getElementById("applicationPetName");
+            const applicationPetType = document.getElementById("applicationPetType");
+            const applicationPetStatus = document.getElementById("applicationPetStatus");
+            const applicationPetImgUrl = document.getElementById("applicationPetImgUrl");
+
+            applicationPetName.textContent = result.name;
+            applicationPetType.textContent = `${result.animalType.charAt(0).toUpperCase() + result.animalType.slice(1).toLowerCase()}`;;
+            applicationPetStatus.textContent = !result.adoptionStatus ? "Available" : "Adopted";;
+            applicationPetImgUrl.setAttribute("src", result.imageUrl);
 
             const reason = document.getElementById("txtReason");
 
