@@ -126,6 +126,8 @@
 
                         <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name">
 
+                        <input type="text" id="petImage" class="form-control mb-2" placeholder="Image URL">
+
                         <select id="petType" class="form-select mb-2">
 
                             <option value="">Select Type</option>
@@ -274,13 +276,19 @@
                 const petName =
                     document.getElementById("petName").value;
 
+                const petImage =
+                    document.getElementById("petImage").value;
+
                 const petType =
                     document.getElementById("petType").value;
 
                 const petData = {
                     name: petName,
-                    animalType: petType
+                    animalType: petType,
+                    imageUrl: petImage
                 };
+
+                console.log(petData);
 
                 const response = await fetch(
                     "http://localhost:8080/admin/add/pet",
