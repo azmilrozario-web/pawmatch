@@ -60,10 +60,10 @@
                 <p class="eyebrow">My account</p>
                 <h1>User Profile</h1>
             </div>
-            <button id="edit-profile-button" class="edit-profile-button" type="button">
+            <a id="edit-profile-button" class="edit-profile-button" href="edit-profile.html">
                 <i class="bi bi-pencil-square" aria-hidden="true"></i>
                 Edit profile
-            </button>
+            </a>
         </div>
 
         <section class="profile-header" aria-labelledby="user-name">
@@ -77,62 +77,6 @@
                 </div>
             </div>
         </section>
-
-        <form id="edit-profile-form" class="edit-profile-form" hidden>
-            <div class="edit-form-heading">
-                <div>
-                    <p class="eyebrow">Account details</p>
-                    <h2>Edit Profile</h2>
-                </div>
-                <button id="cancel-edit-button" class="edit-close-button" type="button" aria-label="Close edit profile">
-                    <i class="bi bi-x-lg" aria-hidden="true"></i>
-                </button>
-            </div>
-
-            <div class="edit-form-grid">
-                <label>
-                    First name
-                    <input id="edit-first-name" type="text" required>
-                </label>
-                <label>
-                    Last name
-                    <input id="edit-last-name" type="text" required>
-                </label>
-                <label>
-                    Email
-                    <input id="edit-email" type="email" required>
-                </label>
-                <label>
-                    Phone
-                    <input id="edit-phone" type="tel">
-                </label>
-                <label class="edit-wide-field">
-                    Address
-                    <input id="edit-address" type="text" required>
-                </label>
-                <label>
-                    Housing type
-                    <select id="edit-housing-type">
-                        <option value="HDB">HDB</option>
-                        <option value="CONDOMINIUM">Condominium</option>
-                        <option value="LANDED">Landed</option>
-                    </select>
-                </label>
-                <label>
-                    Experience level
-                    <select id="edit-experience-level">
-                        <option value="NONE">None</option>
-                        <option value="ONE_TO_THREE">One to three years</option>
-                        <option value="MORE_THAN_THREE">More than three years</option>
-                    </select>
-                </label>
-            </div>
-
-            <div class="edit-form-actions">
-                <p id="edit-profile-message" aria-live="polite"></p>
-                <button type="submit">Save changes</button>
-            </div>
-        </form>
 
         <section class="applications-section" aria-labelledby="applications-title">
             <div class="section-heading">
@@ -234,7 +178,7 @@
                         <div>
                             <dt>Reason</dt>
                             <dd>Seeking an active pet for daily walks and companionship.</dd>
-                        </div>
+                        </div> 
                     </dl>
 
                     <div class="application-update">

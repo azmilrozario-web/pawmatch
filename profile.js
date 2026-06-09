@@ -1,6 +1,5 @@
 const API_BASE_URL = "http://localhost:8080";
 const TOKEN_STORAGE_KEYS = ["token", "accessToken", "jwtToken"];
-let currentProfile = null;
 
 const profileElements = {
     name: document.querySelector("#user-name"),
@@ -86,8 +85,6 @@ async function apiRequest(path, token) {
 }
 
 function renderProfile(profile) {
-    currentProfile = profile;
-
     const fullName = [profile.firstName, profile.lastName]
         .filter(Boolean)
         .join(" ");
@@ -278,78 +275,3 @@ function createElement(tagName, className = "", text = "") {
 
     return element;
 }
-
-const editButton = document.querySelector("#edit-profile-button");
-const editForm = document.querySelector("#edit-profile-form");
-const cancelButton = document.querySelector("#cancel-edit-button");
-const editMessage = document.querySelector("#edit-profile-message");
-
-editButton?.addEventListener("click", () => {
-    if (!currentProfile) {
-        return;
-    }
-
-    document.querySelector("#edit-first-name").value = currentProfile.firstName || "";
-    document.querySelector("#edit-last-name").value = currentProfile.lastName || "";
-    document.querySelector("#edit-email").value = currentProfile.email || "";
-    document.querySelector("#edit-phone").value = currentProfile.phone || "";
-    document.querySelector("#edit-address").value = currentProfile.address || "";
-    document.querySelector("#edit-housing-type").value = currentProfile.housingType || "HDB";
-    document.querySelector("#edit-experience-level").value = currentProfile.experienceLevel || "NONE";
-
-    editMessage.textContent = "";
-    editForm.hidden = false;
-    editForm.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-cancelButton?.addEventListener("click", () => {
-    editForm.hidden = true;
-});
-
-editForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const updatedProfile = {
-        firstName: document.querySelector("#edit-first-name").value.trim(),
-        lastName: document.querySelector("#edit-last-name").value.trim(),
-        email: document.querySelector("#edit-email").value.trim(),
-        phone: document.querySelector("#edit-phone").value.trim(),
-        address: document.querySelector("#edit-address").value.trim(),
-        housingType: document.querySelector("#edit-housing-type").value,
-        experienceLevel: document.querySelector("#edit-experience-level").value,
-        imageUrl: currentProfile?.imageUrl || null
-    };
-
-    editMessage.textContent = "Saving changes...";
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/restricted/updateprofile`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${getStoredToken()}`
-            },
-            body: JSON.stringify(updatedProfile)
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message || "Unable to update profile.");
-        }
-
-        if (result.token) {
-            localStorage.setItem("token", result.token);
-        }
-
-        if (result.refreshToken) {
-            localStorage.setItem("refreshToken", result.refreshToken);
-        }
-
-        renderProfile({ ...currentProfile, ...updatedProfile });
-        editForm.hidden = true;
-    } catch (error) {
-        console.error("Unable to update profile:", error);
-        editMessage.textContent = error.message;
-    }
-});

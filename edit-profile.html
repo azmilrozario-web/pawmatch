@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile | PawMatch</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./scripts/nav.css">
+    <link rel="stylesheet" href="./profile.css?v=4">
+</head>
+
+<body class="custom-bg-section">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html">
+                <img class="logoimage" src="./imgs/logo.svg" alt="PawMatch logo">
+                <span class="fw-bold text-white logotext">PawMatch</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>edit-image-url
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="listings.html">Listings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" aria-label="Open user menu">
+                            <i class="bi bi-person-circle fs-4"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Log in</a></li>
+                            <li><a class="dropdown-item" href="#">Sign up</a></li>
+                            <li><a class="dropdown-item active" href="profile.html">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="d-flex ps-lg-2 pe-lg-4" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-container container">
+        <div class="page-heading">
+            <div>
+                <p class="eyebrow">My account</p>
+                <h1>Edit Profile</h1>
+            </div>
+            <a class="edit-profile-button" href="profile.html">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                Go back
+            </a>
+        </div>
+
+        <form id="edit-profile-form" class="edit-profile-form">
+            <div class="edit-form-heading">
+                <div>
+                    <p class="eyebrow">Account details</p>
+                    <h2>Update Your Information</h2>
+                </div>
+            </div>
+
+            <div class="edit-form-grid">
+
+                <label class="edit-wide-field">
+                    Profile picture
+                    <input id="edit-image-file" type="file" accept="image/*">
+                </label>
+
+                <label>
+                    First name
+                    <input id="edit-first-name" type="text" required>
+                </label>
+                <label>
+                    Last name
+                    <input id="edit-last-name" type="text" required>
+                </label>
+                <label>
+                    Email
+                    <input id="edit-email" type="email" required>
+                </label>
+                <label>
+                    Phone
+                    <input id="edit-phone" type="tel">
+                </label>
+                <label class="edit-wide-field">
+                    Address
+                    <input id="edit-address" type="text" required>
+                </label>
+                <label>
+                    Housing type
+                    <select id="edit-housing-type">
+                        <option value="HDB">HDB</option>
+                        <option value="CONDOMINIUM">Condominium</option>
+                        <option value="LANDED">Landed</option>
+                    </select>
+                </label>
+                <label>
+                    Experience level
+                    <select id="edit-experience-level">
+                        <option value="NONE">None</option>
+                        <option value="ONE_TO_THREE">One to three years</option>
+                        <option value="MORE_THAN_THREE">More than three years</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="edit-form-actions">
+                <p id="edit-profile-message" aria-live="polite">Loading your profile...</p>
+                <div class="edit-action-buttons">
+                    <button type="submit">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="py-3 mt-5">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./edit-profile.js?v=1" defer></script>
+</body>
+
+</html>

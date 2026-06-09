@@ -266,8 +266,155 @@ body {
     color: var(--declined-text);
 }
 
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.status-approved {
+    background-color: #d8f3e3 !important;
+    color: #17653a !important;
+    border: 1px solid #a9ddb9;
+}
+
+.status-approved i {
+    color: #17653a !important;
+}
+
+.status-review {
+    background-color: #fff0c9 !important;
+    color: #7a5700 !important;
+    border: 1px solid #f2d68a;
+}
+
+.status-review i {
+    color: #7a5700 !important;
+}
+
+.status-declined {
+    background-color: #ffe0e0 !important;
+    color: #b00020 !important;
+    border: 1px solid #f5b5b5;
+}
+
+.status-declined i {
+    color: #b00020 !important;
+}
+
 footer {
     background: var(--surface-color);
+    
+}
+
+footer .nav-link {
+    color: black !important;
+    font-weight:lighter;
+}
+
+/* Edit Profile Page */
+.edit-profile-form {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-left: 0.4rem solid var(--primary-color);
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0 0.5rem 1.5rem rgba(38, 96, 164, 0.08);
+}
+
+.edit-form-heading {
+    margin-bottom: 1.25rem;
+}
+
+.edit-form-heading h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.edit-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.edit-form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.edit-form-grid input,
+.edit-form-grid select {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.4rem;
+    background: #f8fbff;
+    color: var(--text-color);
+}
+
+.edit-form-grid input:focus,
+.edit-form-grid select:focus {
+    border-color: var(--primary-color);
+    outline: 0.15rem solid rgba(38, 96, 164, 0.15);
+}
+
+.edit-wide-field {
+    grid-column: 1 / -1;
+}
+
+.edit-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.edit-form-actions p {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+.edit-form-actions button {
+    border: none;
+    border-radius: 0.45rem;
+    padding: 0.65rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    font-weight: 700;
+}
+
+.edit-form-actions button:hover {
+    background: #194a82;
+}
+
+@media (max-width: 767px) {
+    .edit-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-wide-field {
+        grid-column: auto;
+    }
+
+    .edit-form-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 991px) {
