@@ -82,7 +82,7 @@
     </nav>
 
     <!-- Container for Update form -->
-    <div class="container w-50 bg-secondary-subtle p-5 rounded-5 border border-light-subtle shadow-sm">
+    <div class="container w-50 bg-secondary-subtle mt-4 p-5 rounded-5 border border-light-subtle shadow-sm">
 
         <div>
             <h2 class="mb-3 fw-bold text-center">Admin Dashboard</h2>
@@ -273,6 +273,10 @@
 
                 const token = isAuthenticated();
 
+                if (!token) {
+                    window.location = "index.html";
+                }
+
                 const petName =
                     document.getElementById("petName").value;
 
@@ -291,7 +295,7 @@
                 console.log(petData);
 
                 const response = await fetch(
-                    "http://localhost:8080/admin/add/pet",
+                    _ADMIN_ENDPOINT_ADDPET,
                     {
                         method: "POST",
                         headers: {
@@ -302,8 +306,6 @@
                     }
                 );
 
-                console.log(response.status);
-
                 if (response.status === 201) {
                     window.location.reload();
                 } else {
@@ -312,7 +314,7 @@
 
             });
 
-            if (updateStatus !== null)                                                           // If querystring is present, (profile is updated)
+            if (updateStatus !== null)                                                   // If querystring is present, (profile is updated)
             {
                 if (updateStatus[1] === "true") {
                     showToast({
@@ -321,7 +323,7 @@
                         bgColor: "success", msg: "Profile Updated."
                     });
 
-                } else {                                                                          // Querystring updated is set to false
+                } else {                                                                 // Querystring updated is set to false
                     showToast({
                         toastElement,
                         toastBodyElement,
@@ -461,6 +463,15 @@
                                 }
                             );
 
+                            if(approveResponse.ok){
+                                const path = window.location.href;                                              // get the current location without the querystring
+                                const url = path + "";                                                          // append the querystring with updated=true
+                                window.location = url;                                                          // refresh the current web page
+                            }else{
+                                const err = await response.json();                                              // obtain the error response
+                                throw new Error(err);                                                           // throw error if unable to perform fetch request
+                            }
+                            
                             console.log(approveResponse.status);
 
                         });
@@ -489,6 +500,15 @@
                                     body: JSON.stringify(rejectData)
                                 }
                             );
+
+                            if(rejectResponse.ok){
+                                const path = window.location.href;                                              // get the current location without the querystring
+                                const url = path + "";                                                          // append the querystring with updated=true
+                                window.location = url;                                                          // refresh the current web page
+                            }else{
+                                const err = await response.json();                                              // obtain the error response
+                                throw new Error(err);                                                           // throw error if unable to perform fetch request
+                            }
 
                             console.log(rejectResponse.status);
 
