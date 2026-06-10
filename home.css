@@ -34,7 +34,7 @@
     font-weight: light !important;
     font-size: 2.5rem;
     margin-left: -2.5rem;
-}
+  }
 
 .nav li:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -89,23 +89,6 @@
 .card-img-top {
     height: 9.375rem;
     object-fit: cover;
-    object-position: center;
-}
-
-.pet-img-2 {
-    object-position: center 55%;
-}
-
-.pet-img-4 {
-    object-position: center 25%;
-}
-
-.pet-img-5 {
-    object-position: center 30%;
-}
-
-.pet-img-6 {
-    object-position: center 15%;
 }
 
 /* Start Profile styles */
