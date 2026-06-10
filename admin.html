@@ -90,9 +90,9 @@
         </div>
 
         <form id="formUpdate" class="needs-validation" novalidate>
-
-            <div class="row justify-content-center pb-3">
-                <div class="col-10">
+            <div class="container-fluid">
+                <div class="row justify-content-center pb-3">
+                <div class="col-12">
 
                     <h3 class="text-center mb-4">
                         Adoption Applications
@@ -104,7 +104,8 @@
                                 <th>ID</th>
                                 <th>User</th>
                                 <th>Pet</th>
-                                <th style="width:35%;">Reason</th>
+                                <th>Image</th>
+                                <th style="width:25%;">Reason</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -227,8 +228,8 @@
                     </div>
 
                 </div>
+                </div>
             </div>
-
         </form>
 
     </div>
@@ -243,6 +244,65 @@
         <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
     </footer>
 
+        <!-- ! appModal -->
+    <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 id="appModalTitle" class="modal-title fs-5" id="exampleModalLabel">
+                        <!-- ! appModalTitle -->
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="productModalBody" class="modal-body">
+
+                    <!-- ! Start Card area to display the selected Product -->
+                    <div class="card h-100 product-card rounded-0 border-0">
+                        <div class="d-flex card-body flex-column">
+                            <p class="card-text d-block">
+                                <span class="fw-bold">Email:</span>
+                                <span id="appModalEmail">
+                                    <!-- ! appModaEmail -->
+                                </span>
+                            </p>
+                            <p class="card-text d-block">
+                                <span class="fw-bold">Phone:</span>
+                                <span id="appModalPhone">
+                                    <!-- ! appModaPhone -->
+                                </span>
+                            </p>
+                            <p class="card-text d-block">
+                                <span class="fw-bold">Housing Type:</span>
+                                <span id="appModalHousingType">
+                                    <!-- ! appModalHousingType -->
+                                </span>
+                            </p>
+                            <p class="card-text d-block">
+                                <span class="fw-bold">Address:</span>
+                                <span id="appModalAddress">
+                                    <!-- ! appModalAddress -->
+                                </span>
+                            </p>
+                            <p class="card-text d-block">
+                                <span class="fw-bold">Experience with Pets:</span>
+                                <span id="appModalExperience">
+                                    <!-- ! appModaPhone -->
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- ! End Card area to display the selected Product -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Import Bootstrap 5's javascript library via its CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -255,6 +315,7 @@
 
     <script src="script/boostrap-ftns.js"></script>
     <script src="script/form-validate.js"></script>
+    <script src="script/admin-userprofile.js"></script>
 
     <!-- Internal Custom Script -->
     <script>
@@ -406,26 +467,37 @@
                     applicationTableBody.innerHTML = "";
 
                     applications.forEach((application) => {
+                        
+                        const userData = JSON.stringify(application.user);
 
                         applicationTableBody.innerHTML += `
                         <tr>
                              <td>${application.id}</td>
-                                <td>${application.user.firstName}</td>
+                                <td>
+                                    <a href="#" data-user-info='${userData}' data-bs-toggle="modal" data-bs-target="#appModal">
+                                        <div class="d-flex">
+                                        ${application.user.firstName} ${application.user.lastName}
+                                        </div>
+                                    </a>
+                                </td>
                                 <td>${application.pet.name}</td>
+                                <td><img style="width: 100px; height: 100px; object-fit: cover; border-radius: 0.2rem;" src="${application.pet.imageUrl}"></td>
                                 <td>${application.reason}</td>
                                 <td>${application.approvalStatus}</td>
                             <td>
-                            <button
-                                class="btn btn-success btn-sm approveBtn"
-                                data-id="${application.id}">
-                                Approve
-                            </button>
+                                <div class="d-flex gap-2">
+                                    <button
+                                        class="btn btn-success btn-sm approveBtn"
+                                        data-id="${application.id}">
+                                        Approve
+                                    </button>
 
-                            <button
-                                class="btn btn-danger btn-sm rejectBtn"
-                                data-id="${application.id}">
-                                Reject
-                            </button>
+                                    <button
+                                        class="btn btn-danger btn-sm rejectBtn"
+                                        data-id="${application.id}">
+                                        Reject
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                         `;
