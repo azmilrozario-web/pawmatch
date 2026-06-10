@@ -61,7 +61,8 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Log in</a></li>
                             <li><a class="dropdown-item" href="#">Signup</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-it
+                                em" href="#">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -77,93 +78,16 @@
     </nav>
 
     <!-- Listings -->
-
     <main>
-        <div class="container my-5">
-            <div class="row">
-                <!-- Filter Sidebar -->
-                <aside class="col-md-3">
-                    <h5>Filter</h5>
-                    <!-- Species -->
-                    <div class="mb-3">
-                        <label for="species" class="form-label">Species</label>
-                        <select id="species" class="form-select">
-                            <option>All species</option>
-                            <option>Dog</option>
-                            <option>Cat</option>
-                        </select>
-                    </div>
+        <div class="container my-4">
+            <h2 class="mb-3 fw-bold text-center">Latest Listings</h2>
 
-                    <!-- Breed -->
-                    <label for="breed">Breed</label>
-                    <select id="breed" class="form-select mb-3">
-                        <option>All breeds</option>
-                        <option>Golden Retriever</option>
-                        <option>German Shepherd</option>
-                        <option>Poodle</option>
-                        <option>French Bulldog</option>
-                        <option>Dachshund</option>
-                        <option>Maltese</option>
-                        <option>Shih Tzu</option>
-                    </select>
-
-                    <!-- Age -->
-                    <h5>Age</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="babies">
-                        <label class="form-check-label" for="babies">Babies</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="young">
-                        <label class="form-check-label" for="young">Young</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="adult">
-                        <label class="form-check-label" for="adult">Adult</label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="senior">
-                        <label class="form-check-label" for="senior">Senior</label>
-                    </div>
-
-                    <!-- Gender -->
-
-                    <h5>Gender</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="Male">
-                        <label class="form-check-label" for="Male">Male</label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="Female">
-                        <label class="form-check-label" for="Female">Female</label>
-                    </div>
-
-
-<!-- Search Button -->
-<button id="searchBtn" class="btn btn-primary w-100">Search</button>
-
-                </aside>
-
-                <!-- Listings Grid (right) -->
-                <div class="col-md-9">
-                    <div id="homeListing" class="row row-cols-1 row-cols-md-2 g-4">
-
-                        <!-- Cards with images will be injected here by listing.js -->
-                    </div>
-                </div>
+            <div id="homeListing" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-center">
             </div>
-    </main>
 
-    <!-- Card Section -->
-    <div class="container" style="padding-top: 3rem;">
-        <h2 class="mb-3 fw-bold text-center">Latest Listings</h2>
-        <hr class="w-25 mx-auto mb-5 border-dark border-2 opacity-100">
-        <!-- first row -->
-        <div id="homeListing" class="row row-cols-1 row-cols-md-3 g-4 mx-auto">
-            <!-- !! Dynamically list the product data -->
+            <div id="pagination" class="text-center my-4"></div>
         </div>
-
-
+    </main>
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
@@ -192,8 +116,17 @@
                         <!-- ! appModalImage -->
                         <img id="appModalImage" class="card-img-top rounded-0" alt="...">
                         <div class="d-flex card-body flex-column">
-                            <p id="appModalDesc" class="card-text d-block">
-                                <!-- ! appModaDesc -->
+                            <p class="card-text d-block">
+                                <span>TYPE:</span>
+                                <span id="appModalType">
+                                    <!-- ! appModaType -->
+                                </span>
+                            </p>
+                            <p class="card-text d-block">
+                                <span>ADOPTION STATUS:</span>
+                                <span id="appModalAdoptionStatus">
+                                    <!-- ! appModalAdoptionStatus -->
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -201,22 +134,19 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" <script
-                        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-                        crossorigin="anonymous"></script>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-nav-light">Adopt me!</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-                            integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-                            crossorigin="anonymous"></script>
-
-                        <!-- Then load the listing logic -->
-                        <script src="./script/components/Spinner.js"></script>
-                        <script src="./script/data-listing.js"></script>
-                        <script src="./script/listing.js"></script>
-                        <script
-                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script/components/Spinner.js"></script>
+    <script src="./script/listing.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
-</html>
+</html>>

@@ -1,39 +1,84 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
   event.preventDefault();
 
   // 1. Simulated array of Data
   // !! IMPORTANT: eventually this will be replaced with a fetch request (data from database)
-  const pets = data;
+  const response = await fetch("http://localhost:8080/public/api/all/pets");
+  const pets = await response.json();
 
-  // 1.1. Reference the <div> element of id: productList to pupulate the list of products
+  // 1.1. Reference the <div> element of id: productList to populate the list of products
   const homeListing = document.getElementById("homeListing");
 
-  pets.forEach((pet) => {
-    const card = document.createElement("div");
-    card.classList.add("col");
-    card.append(createCard(pet));
-    homeListing.append(card);
-  });
+  // Pagination variables
 
+  const petsPerPage = 9;
+  let currentPage = 1;
+
+  function displayPets(page) {
+    homeListing.innerHTML = "";
+
+    const start = (page - 1) * petsPerPage;
+    const end = start + petsPerPage;
+
+    pets.slice(start, end).forEach((pet) => {
+      const card = document.createElement("div");
+      card.classList.add("col");
+      card.append(createCard(pet));
+      homeListing.append(card);
+    });
+  }
+
+  function displayPagination() {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+
+    const totalPages = Math.ceil(pets.length / petsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement("button");
+
+      button.textContent = i;
+      button.classList.add(
+        "btn",
+        "btn-outline-primary",
+        "mx-1"
+      );
+
+      button.addEventListener("click", () => {
+        currentPage = i;
+        displayPets(currentPage);
+      });
+
+      pagination.append(button);
+    }
+  }
+
+  displayPets(currentPage);
+  displayPagination();
   // 2. Reference the <div> element of id: productModal and its elements to update the modal's data
   const appModal = document.getElementById("appModal");
   const appModalTitle = document.getElementById("appModalTitle");
   const appModalImage = document.getElementById("appModalImage");
-  const appModalDesc = document.getElementById("appModalDesc");
+  const appModalType = document.getElementById("appModalType");
+  const appModalAdoptionStatus = document.getElementById("appModalAdoptionStatus");
 
   const spinnerTitle = new Spinner(appModalTitle);
-  const spinnerDesc = new Spinner(appModalDesc);
+  const spinnerType = new Spinner(appModalType);
+  const spinnerAdoptionStatus = new Spinner(appModalAdoptionStatus);
 
   // Clear everything IMMEDIATELY before the modal even finishes sliding in
   appModal.addEventListener("show.bs.modal", () => {
     appModalTitle.textContent = "";
-    appModalDesc.textContent = "";
+    appModalType.textContent = "";
+    appModalAdoptionStatus.textContent = "";
     appModalImage.src =
       "https://placehold.co/100x100/CCCCCC/FFFFFF?text=Loading Image...";
-    if(spinnerTitle.spinner !== null)
-        spinnerTitle.displaySpinner(false);
-    if(spinnerDesc.spinner !== null)
-        spinnerDesc.displaySpinner(false);
+    if (spinnerTitle.spinner !== null)
+      spinnerTitle.displaySpinner(false);
+    if (spinnerType.spinner !== null)
+      spinnerType.displaySpinner(false);
+    if (spinnerAdoptionStatus.spinner !== null)
+      spinnerAdoptionStatus.displaySpinner(false);
   });
 
   // Show everything after the modal finished sliding in
@@ -41,9 +86,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     appModalImage.src =
       "https://placehold.co/100x100/CCCCCC/FFFFFF?text=Loading Image...";
     spinnerTitle.createSpinner();
-    spinnerDesc.createSpinner();
+    spinnerType.createSpinner();
+    spinnerAdoptionStatus.createSpinner();
     spinnerTitle.displaySpinner(true);
-    spinnerDesc.displaySpinner(true);
+    spinnerType.displaySpinner(true);
+    spinnerAdoptionStatus.displaySpinner(true);
 
     // !! IMPORTANT: To remove this delay once the data is fetched from the server
     const sleep = (delay) =>
@@ -62,7 +109,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       if (pet) {
         appModalTitle.textContent = pet.name;
         appModalImage.src = pet.imageUrl;
-        appModalDesc.textContent = pet.description;
+        appModalType.textContent = pet.animalType;
+        appModalAdoptionStatus.textContent = !pet.adoptionStatus ? "Available" : "Adopted";
       }
     }
   });
@@ -90,32 +138,33 @@ function createCard(item) {
   title.classList.add("card-title");
   title.textContent = item.name;
 
-  // !! 4.1. Create the Subtitle (Age)
-  const age = document.createElement("h6");
-  age.classList.add("card-subtitle", "mb-2", "text-body-secondary");
+  // !! 4.1. Create the Subtitle (animalType)
+  const animalType = document.createElement("h6");
+  animalType.classList.add("card-subtitle", "mb-2", "text-body-secondary");
 
-  // !! 4.1.1. Create the Age label and text
-  const ageLabel = document.createElement("span");
-  ageLabel.textContent = "Age: "
-  ageLabel.classList.add("fw-bolder");
-  const ageText = document.createElement("span");
-  ageText.textContent = `${item.age}`;
-  age.append(ageLabel, ageText);
+  // !! 4.1.1. Create the Animal Type label and text
+  const animalTypeLabel = document.createElement("span");
+  animalTypeLabel.textContent = "Type: "
+  animalTypeLabel.classList.add("fw-bolder");
+  const animalTypeText = document.createElement("span");
+  animalTypeText.textContent = `${item.animalType}`;
+  animalType.append(animalTypeLabel, animalTypeText);
 
-  // !! 4.2. Create the Subtitle (Gender)
-  const gender = document.createElement("h6");
-  gender.classList.add("card-subtitle", "mb-2", "text-body-secondary");
-  gender.textContent = `Gender: ${String(item.gender).toLowerCase()}`;
+  // !! 4.2. Create the Subtitle (adoptionStatus)
+  const adoptionStatus = document.createElement("h6");
+  adoptionStatus.classList.add("card-subtitle", "mb-2", "text-body-secondary");
 
   /* 
-    * Please include the code for Gender similar to item 4.1.1.
+    * Please include the code for AdoptionStatus similar to item 4.1.1.
   */
- // !! 4.2.1. Create the Gender label and text
-
-  // 5. Create the Description
-  const description = document.createElement("p");
-  description.classList.add("card-text", "d-block");
-  description.textContent = item.description;
+  // !! 4.2.1. Create the Gender label and text
+  // !! 4.1.1. Create the Age label and text
+  const adoptionStatusLabel = document.createElement("span");
+  adoptionStatusLabel.textContent = "Adoption Status: "
+  adoptionStatusLabel.classList.add("fw-bolder");
+  const adoptionStatusText = document.createElement("span");
+  adoptionStatusText.textContent = `${!item.adoptionStatus ? "Available" : "Adopted"}`;
+  adoptionStatus.append(adoptionStatusLabel, adoptionStatusText);
 
   // 6. Create the Button
   const button = document.createElement("a");
@@ -129,7 +178,6 @@ function createCard(item) {
   button.addEventListener("click", (event) => {
     event.preventDefault();
 
-  
     // Get current URL and search parameters
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
@@ -144,10 +192,9 @@ function createCard(item) {
   });
 
   // 7. Assemble the pieces (Bottom-up)
-  cardBody.append(title, age, gender, description, button);
+  // cardBody.append(title, animalType, gender, description, button);
+  cardBody.append(title, animalType, adoptionStatus, button);
   card.append(img, cardBody);
-
-  
 
   return card;
 }

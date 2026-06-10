@@ -72,44 +72,65 @@
     color: #ffffff;
 }
 
+
 /* Cards section */
+
+#homeListing {
+    justify-content: center;
+}
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.75rem;
     text-align: left;
 }
 
+/* Card styling */
+
+#homeListing {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 .card {
-    height: 25rem;
+    height: 23rem;
     width: 100%;
 }
 
 .card-img-top {
-    height: 34rem;
+    height: 20rem;
+    width: 100%;
     object-fit: cover;
 }
-
-
-/* Responsive cards grid */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-/* Card hover effect */
+.card-text {
+    flex-grow: 1;
+}
+
+/* Card hover */
 .card:hover {
     transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Text sizing */
+.card-title {
+    font-size: 1.1rem;
+}
 
-.card {
-    border-radius: 8px;
-    overflow: hidden;
+.card-text,
+.card-subtitle {
+    font-size: 0.9rem;
+}
+
+#homeListing {
+    justify-content: center;
 }
 
 
@@ -117,10 +138,10 @@
 aside h4,
 aside h5 {
     color: #2660a4;
-    /* matches your navbar blue */
+    font-size: 1rem;
+    font-weight: 500;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    font-weight: 600;
 }
 
 aside input[type="checkbox"]:hover,
@@ -130,12 +151,19 @@ aside select:hover {
 }
 
 /* Filter labels */
-aside label {
-    font-weight: 500;
-    margin-bottom: 0.25rem;
+.form-label {
+    font-weight: 600;
     color: #2660a4;
 }
 
+.form-check-label {
+    font-weight: 400;
+    color: #2660a4;
+}
+
+aside label {
+    color: #2660a4;
+}
 /* Card body spacing */
 .card-body {
     padding: 0.75rem;
@@ -147,12 +175,6 @@ aside label {
     font-weight: 600;
 }
 
-.card-img-top {
-    height: 9.375
-    rem;
-    object-fit: cover;
-    width: 100%;
-}
 
 /* Search Button */
 .btn-search {
