@@ -1,9 +1,10 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
   event.preventDefault();
 
   // 1. Simulated array of Data
   // !! IMPORTANT: eventually this will be replaced with a fetch request (data from database)
-  const pets = data;
+  const response = await fetch("http://localhost:8080/public/api/all/pets");
+  const pets = await response.json();
 
   // 1.1. Reference the <div> element of id: productList to pupulate the list of products
   const homeListing = document.getElementById("homeListing");
@@ -45,21 +46,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const appModal = document.getElementById("appModal");
   const appModalTitle = document.getElementById("appModalTitle");
   const appModalImage = document.getElementById("appModalImage");
-  const appModalDesc = document.getElementById("appModalDesc");
+  const appModalType = document.getElementById("appModalType");
+  const appModalAdoptionStatus = document.getElementById("appModalAdoptionStatus");
+  const adoptBtn = document.getElementById("adoptBtn");
 
   const spinnerTitle = new Spinner(appModalTitle);
-  const spinnerDesc = new Spinner(appModalDesc);
+  const spinnerType = new Spinner(appModalType);
+  const spinnerAdoptionStatus = new Spinner(appModalAdoptionStatus);
 
   // Clear everything IMMEDIATELY before the modal even finishes sliding in
   appModal.addEventListener("show.bs.modal", () => {
     appModalTitle.textContent = "";
-    appModalDesc.textContent = "";
+    appModalType.textContent = "";
+    appModalAdoptionStatus.textContent = "";
     appModalImage.src =
       "https://placehold.co/100x100/CCCCCC/FFFFFF?text=Loading Image...";
-    if(spinnerTitle.spinner !== null)
-        spinnerTitle.displaySpinner(false);
-    if(spinnerDesc.spinner !== null)
-        spinnerDesc.displaySpinner(false);
+    if (spinnerTitle.spinner !== null)
+      spinnerTitle.displaySpinner(false);
+    if (spinnerType.spinner !== null)
+      spinnerType.displaySpinner(false);
+    if (spinnerAdoptionStatus.spinner !== null)
+      spinnerAdoptionStatus.displaySpinner(false);
   });
 
   // Show everything after the modal finished sliding in
@@ -67,9 +74,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     appModalImage.src =
       "https://placehold.co/100x100/CCCCCC/FFFFFF?text=Loading Image...";
     spinnerTitle.createSpinner();
-    spinnerDesc.createSpinner();
+    spinnerType.createSpinner();
+    spinnerAdoptionStatus.createSpinner();
     spinnerTitle.displaySpinner(true);
-    spinnerDesc.displaySpinner(true);
+    spinnerType.displaySpinner(true);
+    spinnerAdoptionStatus.displaySpinner(true);
 
     // !! IMPORTANT: To remove this delay once the data is fetched from the server
     const sleep = (delay) =>
@@ -88,7 +97,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
       if (pet) {
         appModalTitle.textContent = pet.name;
         appModalImage.src = pet.imageUrl;
-        appModalDesc.textContent = pet.description;
+        appModalType.textContent = `${pet.animalType.charAt(0).toUpperCase() + pet.animalType.slice(1).toLowerCase()}`;
+        appModalAdoptionStatus.textContent = !pet.adoptionStatus ? "Available" : "Adopted";
+
+        adoptBtn.onclick = () => {
+          window.location.href = `application.html?pet=${pet.id}`;
+        };
       }
     }
   });
@@ -126,38 +140,34 @@ function createCard(item) {
   speciesText.textContent = item.species;
   species.append(speciesLabel, speciesText);
 
-  // !! 4.1. Create the Subtitle (Age)
-  const age = document.createElement("h6");
-  age.classList.add("card-subtitle", "mb-2", "text-body-secondary");
+  // !! 4.1. Create the Subtitle (animalType)
+  const animalType = document.createElement("h6");
+  animalType.classList.add("card-subtitle", "mb-2", "text-body-secondary");
 
-  // !! 4.1.1. Create the Age label and text
-  const ageLabel = document.createElement("span");
-  ageLabel.textContent = "Age: "
-  ageLabel.classList.add("fw-bolder");
-  const ageText = document.createElement("span");
-  ageText.textContent = `${item.age}`;
-  age.append(ageLabel, ageText);
+  // !! 4.1.1. Create the Animal Type label and text
+  const animalTypeLabel = document.createElement("span");
+  animalTypeLabel.textContent = "Type: "
+  animalTypeLabel.classList.add("fw-bolder");
+  const animalTypeText = document.createElement("span");
+  animalTypeText.textContent = `${item.animalType.charAt(0).toUpperCase() + item.animalType.slice(1).toLowerCase()}`;
+  animalType.append(animalTypeLabel, animalTypeText);
 
   // !! 4.2. Create the Subtitle (Gender)
   const gender = document.createElement("h6");
   gender.classList.add("card-subtitle", "mb-2", "text-body-secondary");
-  const genderLabel = document.createElement("span");
-  genderLabel.textContent = "Gender: ";
-  genderLabel.classList.add("fw-bolder");
-  const genderText = document.createElement("span");
-  const g = String(item.gender).toLowerCase();
-  genderText.textContent = g.charAt(0).toUpperCase() + g.slice(1);
-  gender.append(genderLabel, genderText);
+  gender.textContent = `Gender: ${String(item.gender).toLowerCase()}`;
 
   /* 
-    * Please include the code for Gender similar to item 4.1.1.
+    * Please include the code for AdoptionStatus similar to item 4.1.1.
   */
- // !! 4.2.1. Create the Gender label and text
-
-  // 5. Create the Description
-  const description = document.createElement("p");
-  description.classList.add("card-text", "d-block");
-  description.textContent = item.description;
+  // !! 4.2.1. Create the Gender label and text
+  // !! 4.1.1. Create the Age label and text
+  const adoptionStatusLabel = document.createElement("span");
+  adoptionStatusLabel.textContent = "Adoption Status: "
+  adoptionStatusLabel.classList.add("fw-bolder");
+  const adoptionStatusText = document.createElement("span");
+  adoptionStatusText.textContent = `${!item.adoptionStatus ? "Available" : "Adopted"}`;
+  adoptionStatus.append(adoptionStatusLabel, adoptionStatusText);
 
   // 6. Create the Button
   const button = document.createElement("a");
@@ -185,7 +195,7 @@ function createCard(item) {
   });
 
   // 7. Assemble the pieces (Bottom-up)
-  cardBody.append(title, age, gender, species, description, button);
+  cardBody.append(title, age, gender, description, button);
   card.append(img, cardBody);
 
   return card;

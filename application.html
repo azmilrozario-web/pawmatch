@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Import Bootstrap 5's utility classes and components via its CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Import fonts awesome stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+    <!-- Import custom stylesheet -->
+    <link rel="stylesheet" href="./home.css">
+</head>
+<!-- ! Homepage -->
+
+<!-- Navigation bar -->
+
+<body class="custom-bg-section vh-100">
+
+    <div class="toast-container p-3 top-0 start-50 translate-middle-x">
+
+        <div id="msg-toast" class="toast align-items-center mt-2" role="alert" aria-live="assertive" aria-atomic="true"
+            data-bs-autohide="true" data-bs-delay="4000">
+
+            <div class="d-flex">
+
+                <div id="msg-toast-body" class="toast-body">
+                </div>
+
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close">
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img class="logoimage" src="./imgs/logo.svg" alt="Logo">
+                <span class="fw-bold text-white logotext">
+                    PawMatch
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">About</a>
+                    </li>
+                    <li class="nav-item d-none" id="adminNavItem">
+                        <a class="nav-link active" href="admin.html">
+                            Admin
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer"
+                                class="fs-6g px-1 fw-lighter"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Log in</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Signup</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex ps-2 pe-5" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+    </nav>
+
+    <!-- Container for Update form -->
+    <div class="container w-50 bg-secondary-subtle mt-4 p-5 rounded-2 rounded-4 shadow-sm">
+
+        <div>
+            <h2 class="mb-3 fw-bold text-center">Adoption Application</h2>
+            <hr class="w-25 mx-auto mb-5 border-dark border-2 opacity-100">
+        </div>
+
+        <!-- Show the Pet Information -->
+         <div class="row justify-content-center pb-3">
+            <div class="col-10 border border-2"> 
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center py-2"> 
+                    <svg aria-hidden="true" class="bd-placeholder-img " height="96" preserveAspectRatio="xMidYMid slice" width="100%" xmlns="http://www.w3.org/2000/svg">
+                        <img id="applicationPetImgUrl" class="card-img-top rounded-4" alt="undefined" />
+                    </svg> 
+                    <div class="col-lg-8 ms-4"> 
+                        <h6>
+                            <span class="fw-bolder">Name: </span>
+                            <span id="applicationPetName"></span>
+                        </h6> 
+                        <h6>
+                            <span class="fw-bolder">Type: </span>
+                            <span id="applicationPetType"></span>
+                        </h6>
+                        <h6>
+                            <span class="fw-bolder">Adoption Status: </span>
+                            <span id="applicationPetStatus"></span>
+                        </h6>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+
+        <!-- Submit the reason -->
+        <form id="formUpdate" class="needs-validation" novalidate>
+
+            <div class="row justify-content-center pb-3">
+                <div class="col-10">
+                    <label class="form-label text-secondary fw-normal" for="txtReason">
+                        Why would you like to adopt this pet?
+                    </label>
+
+                    <textarea id="txtReason" class="form-control" rows="6" required></textarea>
+
+                    <div class="invalid-feedback text-danger">
+                        Please tell us why you want to adopt this pet.
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-4">
+                <button id="btnSubmitApplication" class="btn btn-success btn-sm">
+                    Submit Application
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+    <!-- End of Container for Signup form -->
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
+    </footer>
+
+    <!-- Import Bootstrap 5's javascript library via its CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="script/const.js"></script>
+    <script src="script/auth.js"></script>
+    <script src="script/components/Spinner.js"></script>
+    <script src="script/loader.js"></script>
+
+    <script src="script/boostrap-ftns.js"></script>
+    <script src="script/form-validate.js"></script>
+
+    <!-- Internal Custom Script -->
+    <script>
+
+        document.addEventListener("DOMContentLoaded", async (event) => {
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const pet = urlParams.get("pet");
+
+            const response = await fetch(`${_PUBLIC_ENDPOINT_GETPETBYID}/${pet}`, {
+                method: "GET"
+            })
+
+            const result = await response.json();
+
+            const applicationPetName = document.getElementById("applicationPetName");
+            const applicationPetType = document.getElementById("applicationPetType");
+            const applicationPetStatus = document.getElementById("applicationPetStatus");
+            const applicationPetImgUrl = document.getElementById("applicationPetImgUrl");
+
+            applicationPetName.textContent = result.name;
+            applicationPetType.textContent = `${result.animalType.charAt(0).toUpperCase() + result.animalType.slice(1).toLowerCase()}`;;
+            applicationPetStatus.textContent = !result.adoptionStatus ? "Available" : "Adopted";;
+            applicationPetImgUrl.setAttribute("src", result.imageUrl);
+
+            const reason = document.getElementById("txtReason");
+
+            const toastElement = document.getElementById("msg-toast");              // Get the toast element - msg-toast
+            const toastBodyElement = document.getElementById("msg-toast-body");     // Get the toast element - msg-toast-body
+
+            const applicationStatus = window.location.href.match(/submitted=([^&]*)/);
+
+            if (applicationStatus !== null) {
+                if (applicationStatus[1] === "true") {
+                    showToast({
+                        toastElement,
+                        toastBodyElement,
+                        bgColor: "success",
+                        msg: "Application submitted successfully."
+                    });
+
+                } else {
+                    showToast({
+                        toastElement,
+                        toastBodyElement,
+                        bgColor: "danger",
+                        msg: "Unable to submit application."
+                    });
+                }
+            }
+
+
+            try {
+
+                const token = isAuthenticated();
+
+                if (!token) {
+                    window.location = "login.html";
+                }
+
+            } catch (error) {
+                showToast({
+                    toastElement,
+                    toastBodyElement,
+                    bgColor: "danger",
+                    msg: error.message
+                });
+            }
+
+        });
+
+        // Custom JS statements and function
+        document.getElementById("formUpdate").addEventListener("submit", async (event) => {
+
+            event.preventDefault();                                                 // Prevent default browser events from happening
+
+            const reason = document.getElementById("txtReason");                     // Create constant variables to capture form inputs - txtReason
+
+            const toastElement = document.getElementById("msg-toast");              // Get the toast element - msg-toast
+            const toastBodyElement = document.getElementById("msg-toast-body");     // Get the toast element - msg-toast-body
+
+            if (isEmpty(reason.value)) {     // Trap empty inputs for txtEmail and userName - isEmpty()
+                showToast({
+                    toastElement,
+                    toastBodyElement,
+                    bgColor: "danger",
+                    msg: "Please enter a reason for adoption."
+                });
+                return;
+            }
+
+            // Application page does not need password or email validation
+
+            spinner.createSpinner("btnSubmitApplication");                                     // Create the spinner, apply it to btnSubmitApplication
+            spinner.displaySpinner(true);
+
+            formData = {                                                            // prepare to update 
+                reason: reason.value
+            };
+
+            // Application page does not need password or email validation
+
+            const params = new URLSearchParams(window.location.search);
+            const petId = params.get("pet");
+
+            console.log("Pet ID:", petId);
+
+            const applicationSuccess =
+                await submitApplication(petId, formData);
+
+            if (!applicationSuccess) {
+
+                spinner.displaySpinner(false);
+
+                showToast({
+                    toastElement,
+                    toastBodyElement,
+                    bgColor: "danger",
+                    msg: "Unable to submit application."
+                });
+
+                return;
+            }
+
+            showToast({
+                toastElement,
+                toastBodyElement,
+                bgColor: "success",
+                msg: "Application submitted successfully."
+            });
+
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1500);
+
+        });
+
+    </script>
+</body>
+
+</html>
