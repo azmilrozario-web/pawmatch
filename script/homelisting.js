@@ -3,18 +3,88 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   // 1. Simulated array of Data
   // !! IMPORTANT: eventually this will be replaced with a fetch request (data from database)
+  const homeListing = document.getElementById("homeListing");
+
   const response = await fetch("http://localhost:8080/public/api/all/pets");
   const pets = await response.json();
 
-  // 1.1. Reference the <div> element of id: productList to pupulate the list of products
-  const homeListing = document.getElementById("homeListing");
+  const petsPerPage = 9;
+  let currentPage = 1;
 
-  pets.forEach((pet) => {
-    const card = document.createElement("div");
-    card.classList.add("col");
-    card.append(createCard(pet));
-    homeListing.append(card);
-  });
+  function displayPets(page) {
+
+    homeListing.innerHTML = "";
+
+    const start = (page - 1) * petsPerPage;
+    const end = start + petsPerPage;
+
+    pets.slice(start, end).forEach((pet) => {
+
+      const card = document.createElement("div");
+      card.classList.add("col");
+
+      card.append(createCard(pet));
+
+      homeListing.append(card);
+
+    });
+
+  }
+
+  displayPets(currentPage);
+  displayPagination();
+
+  function displayPagination() {
+
+    const pagination = document.getElementById("pagination");
+
+    pagination.innerHTML = "";
+
+    const totalPages = Math.ceil(pets.length / petsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+
+      const button = document.createElement("button");
+
+      button.textContent = i;
+
+      if (i === currentPage) {
+        button.classList.add(
+          "btn",
+          "btn-primary",
+          "mx-1"
+        );
+      } else {
+        button.classList.add(
+          "btn",
+          "btn-outline-primary",
+          "mx-1"
+        );
+      }
+
+      button.addEventListener("click", () => {
+
+        currentPage = i;
+
+        displayPets(currentPage);
+        displayPagination();
+
+      });
+
+      pagination.append(button);
+
+    }
+
+  }
+  // 1.1. Reference the <div> element of id: productList to pupulate the list of products
+
+
+  // pets.forEach((pet) => {
+  //   const card = document.createElement("div");
+  //   card.classList.add("col");
+  //   card.append(createCard(pet));
+  //   homeListing.append(card);
+  // });
 
   // 2. Reference the <div> element of id: productModal and its elements to update the modal's data
   const appModal = document.getElementById("appModal");
