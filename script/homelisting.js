@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     appModalTitle.textContent = "";
     appModalType.textContent = "";
     appModalAdoptionStatus.textContent = "";
+    adoptBtn.classList.add("d-none");
     appModalImage.src =
       "https://placehold.co/100x100/CCCCCC/FFFFFF?text=Loading Image...";
     if (spinnerTitle.spinner !== null)
@@ -144,6 +145,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
         appModalType.textContent = `${pet.animalType.charAt(0).toUpperCase() + pet.animalType.slice(1).toLowerCase()}`;
         appModalAdoptionStatus.textContent = !pet.adoptionStatus ? "Available" : "Adopted";
 
+        if(pet.adoptionStatus)
+          adoptBtn.classList.add("d-none");
+        else
+          adoptBtn.classList.remove("d-none");
+        
         adoptBtn.onclick = () => {
           window.location.href = `application.html?pet=${pet.id}`;
         };
