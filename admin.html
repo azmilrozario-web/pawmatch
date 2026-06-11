@@ -43,13 +43,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Listings</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Listings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">About</a>
+                        <a class="nav-link" aria-current="page" href="about.html">About</a>
                     </li>
                     <li class="nav-item d-none" id="adminNavItem">
                         <a class="nav-link active" href="admin.html">
@@ -92,142 +92,142 @@
         <form id="formUpdate" class="needs-validation" novalidate>
             <div class="container-fluid">
                 <div class="row justify-content-center pb-3">
-                <div class="col-12">
+                    <div class="col-12">
 
-                    <h3 class="text-center mb-4">
-                        Adoption Applications
-                    </h3>
+                        <h3 class="text-center mb-4">
+                            Adoption Applications
+                        </h3>
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Pet</th>
-                                <th>Image</th>
-                                <th style="width:25%;">Reason</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>User</th>
+                                    <th>Pet</th>
+                                    <th>Image</th>
+                                    <th style="width:25%;">Reason</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-                        <tbody id="applicationTableBody">
-                            <!-- Applications will be loaded here -->
-                        </tbody>
-                    </table>
+                            <tbody id="applicationTableBody">
+                                <!-- Applications will be loaded here -->
+                            </tbody>
+                        </table>
 
 
-                    <hr class="my-5">
+                        <hr class="my-5">
 
-                    <h3 class="text-center mb-4">
-                        Pet Management
-                    </h3>
+                        <h3 class="text-center mb-4">
+                            Pet Management
+                        </h3>
 
-                    <div id="addPetForm" class="mb-4">
+                        <div id="addPetForm" class="mb-4">
 
-                        <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name">
+                            <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name">
 
-                        <input type="text" id="petImage" class="form-control mb-2" placeholder="Image URL">
+                            <input type="text" id="petImage" class="form-control mb-2" placeholder="Image URL">
 
-                        <select id="petType" class="form-select mb-2">
+                            <select id="petType" class="form-select mb-2">
 
-                            <option value="">Select Type</option>
-                            <option value="DOG">DOG</option>
-                            <option value="CAT">CAT</option>
-                            <option value="HAMSTER">HAMSTER</option>
-                            <option value="TERRAPIN">TERRAPIN</option>
+                                <option value="">Select Type</option>
+                                <option value="DOG">DOG</option>
+                                <option value="CAT">CAT</option>
+                                <option value="HAMSTER">HAMSTER</option>
+                                <option value="TERRAPIN">TERRAPIN</option>
 
-                        </select>
+                            </select>
 
-                        <button id="savePetBtn" type="button" class="btn btn-success">
-                            Add Pet
-                        </button>
+                            <button id="savePetBtn" type="button" class="btn btn-success">
+                                Add Pet
+                            </button>
+
+                        </div>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="petTableBody">
+                            </tbody>
+                        </table>
+
+                        <hr>
+
+                        <h2 class="text-center mt-5">User Management</h2>
+
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="userTableBody">
+
+                            </tbody>
+                        </table>
+
+                        <div class="mb-4">
+
+                            <input type="hidden" id="editingUserId">
+
+                            <input type="text" id="firstName" class="form-control mb-2" placeholder="First Name">
+
+                            <input type="text" id="lastName" class="form-control mb-2" placeholder="Last Name">
+
+                            <input type="email" id="email" class="form-control mb-2" placeholder="Email">
+
+                            <input type="text" id="phone" class="form-control mb-2" placeholder="Phone">
+
+                            <select id="housingType" class="form-select mb-2">
+
+                                <option value="">Select Housing Type</option>
+                                <option value="HDB">HDB</option>
+                                <option value="CONDO">CONDO</option>
+                                <option value="LANDED">LANDED</option>
+
+                            </select>
+
+                            <select id="experienceLevel" class="form-select mb-2">
+
+                                <option value="">Select Experience Level</option>
+                                <option value="NONE">NONE</option>
+                                <option value="BEGINNER">BEGINNER</option>
+                                <option value="INTERMEDIATE">INTERMEDIATE</option>
+                                <option value="ADVANCED">ADVANCED</option>
+
+                            </select>
+
+                            <input type="text" id="address" class="form-control mb-2" placeholder="Address">
+
+                            <select id="role" class="form-select mb-2">
+
+                                <option value="USER">USER</option>
+                                <option value="ADMIN">ADMIN</option>
+
+                            </select>
+
+                            <button id="updateUserBtn" class="btn btn-success mt-3">
+                                Update User
+                            </button>
+
+                        </div>
 
                     </div>
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="petTableBody">
-                        </tbody>
-                    </table>
-
-                    <hr>
-
-                    <h2 class="text-center mt-5">User Management</h2>
-
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="userTableBody">
-
-                        </tbody>
-                    </table>
-
-                    <div class="mb-4">
-
-                        <input type="hidden" id="editingUserId">
-
-                        <input type="text" id="firstName" class="form-control mb-2" placeholder="First Name">
-
-                        <input type="text" id="lastName" class="form-control mb-2" placeholder="Last Name">
-
-                        <input type="email" id="email" class="form-control mb-2" placeholder="Email">
-
-                        <input type="text" id="phone" class="form-control mb-2" placeholder="Phone">
-
-                        <select id="housingType" class="form-select mb-2">
-
-                            <option value="">Select Housing Type</option>
-                            <option value="HDB">HDB</option>
-                            <option value="CONDO">CONDO</option>
-                            <option value="LANDED">LANDED</option>
-
-                        </select>
-
-                        <select id="experienceLevel" class="form-select mb-2">
-
-                            <option value="">Select Experience Level</option>
-                            <option value="NONE">NONE</option>
-                            <option value="BEGINNER">BEGINNER</option>
-                            <option value="INTERMEDIATE">INTERMEDIATE</option>
-                            <option value="ADVANCED">ADVANCED</option>
-
-                        </select>
-
-                        <input type="text" id="address" class="form-control mb-2" placeholder="Address">
-
-                        <select id="role" class="form-select mb-2">
-
-                            <option value="USER">USER</option>
-                            <option value="ADMIN">ADMIN</option>
-
-                        </select>
-
-                        <button id="updateUserBtn" class="btn btn-success mt-3">
-                            Update User
-                        </button>
-
-                    </div>
-
-                </div>
                 </div>
             </div>
         </form>
@@ -244,7 +244,7 @@
         <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
     </footer>
 
-        <!-- ! appModal -->
+    <!-- ! appModal -->
     <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -467,7 +467,7 @@
                     applicationTableBody.innerHTML = "";
 
                     applications.forEach((application) => {
-                        
+
                         const userData = JSON.stringify(application.user);
 
                         applicationTableBody.innerHTML += `
@@ -535,15 +535,15 @@
                                 }
                             );
 
-                            if(approveResponse.ok){
+                            if (approveResponse.ok) {
                                 const path = window.location.href;                                              // get the current location without the querystring
                                 const url = path + "";                                                          // append the querystring with updated=true
                                 window.location = url;                                                          // refresh the current web page
-                            }else{
+                            } else {
                                 const err = await response.json();                                              // obtain the error response
                                 throw new Error(err);                                                           // throw error if unable to perform fetch request
                             }
-                            
+
                             console.log(approveResponse.status);
 
                         });
@@ -573,11 +573,11 @@
                                 }
                             );
 
-                            if(rejectResponse.ok){
+                            if (rejectResponse.ok) {
                                 const path = window.location.href;                                              // get the current location without the querystring
                                 const url = path + "";                                                          // append the querystring with updated=true
                                 window.location = url;                                                          // refresh the current web page
-                            }else{
+                            } else {
                                 const err = await response.json();                                              // obtain the error response
                                 throw new Error(err);                                                           // throw error if unable to perform fetch request
                             }
@@ -885,7 +885,8 @@
     </script>
 </body>
 
-</html><!DOCTYPE html>
+</html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -979,142 +980,142 @@
         <form id="formUpdate" class="needs-validation" novalidate>
             <div class="container-fluid">
                 <div class="row justify-content-center pb-3">
-                <div class="col-12">
+                    <div class="col-12">
 
-                    <h3 class="text-center mb-4">
-                        Adoption Applications
-                    </h3>
+                        <h3 class="text-center mb-4">
+                            Adoption Applications
+                        </h3>
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Pet</th>
-                                <th>Image</th>
-                                <th style="width:25%;">Reason</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>User</th>
+                                    <th>Pet</th>
+                                    <th>Image</th>
+                                    <th style="width:25%;">Reason</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-                        <tbody id="applicationTableBody">
-                            <!-- Applications will be loaded here -->
-                        </tbody>
-                    </table>
+                            <tbody id="applicationTableBody">
+                                <!-- Applications will be loaded here -->
+                            </tbody>
+                        </table>
 
 
-                    <hr class="my-5">
+                        <hr class="my-5">
 
-                    <h3 class="text-center mb-4">
-                        Pet Management
-                    </h3>
+                        <h3 class="text-center mb-4">
+                            Pet Management
+                        </h3>
 
-                    <div id="addPetForm" class="mb-4">
+                        <div id="addPetForm" class="mb-4">
 
-                        <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name">
+                            <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name">
 
-                        <input type="text" id="petImage" class="form-control mb-2" placeholder="Image URL">
+                            <input type="text" id="petImage" class="form-control mb-2" placeholder="Image URL">
 
-                        <select id="petType" class="form-select mb-2">
+                            <select id="petType" class="form-select mb-2">
 
-                            <option value="">Select Type</option>
-                            <option value="DOG">DOG</option>
-                            <option value="CAT">CAT</option>
-                            <option value="HAMSTER">HAMSTER</option>
-                            <option value="TERRAPIN">TERRAPIN</option>
+                                <option value="">Select Type</option>
+                                <option value="DOG">DOG</option>
+                                <option value="CAT">CAT</option>
+                                <option value="HAMSTER">HAMSTER</option>
+                                <option value="TERRAPIN">TERRAPIN</option>
 
-                        </select>
+                            </select>
 
-                        <button id="savePetBtn" type="button" class="btn btn-success">
-                            Add Pet
-                        </button>
+                            <button id="savePetBtn" type="button" class="btn btn-success">
+                                Add Pet
+                            </button>
+
+                        </div>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="petTableBody">
+                            </tbody>
+                        </table>
+
+                        <hr>
+
+                        <h2 class="text-center mt-5">User Management</h2>
+
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="userTableBody">
+
+                            </tbody>
+                        </table>
+
+                        <div class="mb-4">
+
+                            <input type="hidden" id="editingUserId">
+
+                            <input type="text" id="firstName" class="form-control mb-2" placeholder="First Name">
+
+                            <input type="text" id="lastName" class="form-control mb-2" placeholder="Last Name">
+
+                            <input type="email" id="email" class="form-control mb-2" placeholder="Email">
+
+                            <input type="text" id="phone" class="form-control mb-2" placeholder="Phone">
+
+                            <select id="housingType" class="form-select mb-2">
+
+                                <option value="">Select Housing Type</option>
+                                <option value="HDB">HDB</option>
+                                <option value="CONDO">CONDO</option>
+                                <option value="LANDED">LANDED</option>
+
+                            </select>
+
+                            <select id="experienceLevel" class="form-select mb-2">
+
+                                <option value="">Select Experience Level</option>
+                                <option value="NONE">NONE</option>
+                                <option value="BEGINNER">BEGINNER</option>
+                                <option value="INTERMEDIATE">INTERMEDIATE</option>
+                                <option value="ADVANCED">ADVANCED</option>
+
+                            </select>
+
+                            <input type="text" id="address" class="form-control mb-2" placeholder="Address">
+
+                            <select id="role" class="form-select mb-2">
+
+                                <option value="USER">USER</option>
+                                <option value="ADMIN">ADMIN</option>
+
+                            </select>
+
+                            <button id="updateUserBtn" class="btn btn-success mt-3">
+                                Update User
+                            </button>
+
+                        </div>
 
                     </div>
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="petTableBody">
-                        </tbody>
-                    </table>
-
-                    <hr>
-
-                    <h2 class="text-center mt-5">User Management</h2>
-
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="userTableBody">
-
-                        </tbody>
-                    </table>
-
-                    <div class="mb-4">
-
-                        <input type="hidden" id="editingUserId">
-
-                        <input type="text" id="firstName" class="form-control mb-2" placeholder="First Name">
-
-                        <input type="text" id="lastName" class="form-control mb-2" placeholder="Last Name">
-
-                        <input type="email" id="email" class="form-control mb-2" placeholder="Email">
-
-                        <input type="text" id="phone" class="form-control mb-2" placeholder="Phone">
-
-                        <select id="housingType" class="form-select mb-2">
-
-                            <option value="">Select Housing Type</option>
-                            <option value="HDB">HDB</option>
-                            <option value="CONDO">CONDO</option>
-                            <option value="LANDED">LANDED</option>
-
-                        </select>
-
-                        <select id="experienceLevel" class="form-select mb-2">
-
-                            <option value="">Select Experience Level</option>
-                            <option value="NONE">NONE</option>
-                            <option value="BEGINNER">BEGINNER</option>
-                            <option value="INTERMEDIATE">INTERMEDIATE</option>
-                            <option value="ADVANCED">ADVANCED</option>
-
-                        </select>
-
-                        <input type="text" id="address" class="form-control mb-2" placeholder="Address">
-
-                        <select id="role" class="form-select mb-2">
-
-                            <option value="USER">USER</option>
-                            <option value="ADMIN">ADMIN</option>
-
-                        </select>
-
-                        <button id="updateUserBtn" class="btn btn-success mt-3">
-                            Update User
-                        </button>
-
-                    </div>
-
-                </div>
                 </div>
             </div>
         </form>
@@ -1131,7 +1132,7 @@
         <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
     </footer>
 
-        <!-- ! appModal -->
+    <!-- ! appModal -->
     <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -1354,7 +1355,7 @@
                     applicationTableBody.innerHTML = "";
 
                     applications.forEach((application) => {
-                        
+
                         const userData = JSON.stringify(application.user);
 
                         applicationTableBody.innerHTML += `
@@ -1422,15 +1423,15 @@
                                 }
                             );
 
-                            if(approveResponse.ok){
+                            if (approveResponse.ok) {
                                 const path = window.location.href;                                              // get the current location without the querystring
                                 const url = path + "";                                                          // append the querystring with updated=true
                                 window.location = url;                                                          // refresh the current web page
-                            }else{
+                            } else {
                                 const err = await response.json();                                              // obtain the error response
                                 throw new Error(err);                                                           // throw error if unable to perform fetch request
                             }
-                            
+
                             console.log(approveResponse.status);
 
                         });
@@ -1460,11 +1461,11 @@
                                 }
                             );
 
-                            if(rejectResponse.ok){
+                            if (rejectResponse.ok) {
                                 const path = window.location.href;                                              // get the current location without the querystring
                                 const url = path + "";                                                          // append the querystring with updated=true
                                 window.location = url;                                                          // refresh the current web page
-                            }else{
+                            } else {
                                 const err = await response.json();                                              // obtain the error response
                                 throw new Error(err);                                                           // throw error if unable to perform fetch request
                             }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Import Bootstrap 5's utility classes and components via its CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Import fonts awesome stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+    <!-- Import custom stylesheet -->
+    <link rel="stylesheet" href="./home.css">
+</head>
+<!-- ! Homepage -->
+
+<!-- Navigation bar -->
+
+<body class="custom-bg-section vh-100">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark custom-bg-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img class="logoimage" src="./imgs/logo.svg" alt="Logo">
+                <span class="fw-bold text-white logotext">
+                    PawMatch
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item d-none" id="adminNavItem">
+                        <a class="nav-link active" href="admin.html">
+                            Admin
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle fs-4"></i><span id="profileContainer"
+                                class="fs-6g px-1 fw-lighter"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Log in</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Signup</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex ps-2 pe-5" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+    </nav>
+
+    <body class="custom-bg-section">
+
+        <!-- NAVBAR -->
+        <nav>...</nav>
+
+        <!-- HERO -->
+        <section class="hero-section container text-center py-5">
+            <h1 class="hero-title">We're on a mission to help you find the right pet</h1>
+            <p class="hero-subtitle">Every animal deserves a loving home—and every home deserves the joy of a companion.
+            </p>
+        </section>
+
+        <!-- HERO IMAGE -->
+        <section class="container py-5">
+            <img src="./imgs/sheldon.png" class="img-fluid rounded w-100">
+        </section>
+
+        <!-- INTRO TEXT + GRID -->
+        <section class="container py-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Give a Second Chance. Find a Forever Friend.</h2>
+                    <p>Every pet deserves a loving home. What started as a small effort to help stray and abandoned
+                        animals has grown into a mission to connect them with families who care. Your next best friend
+                        is waiting.</p>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <img src="./imgs/menholdingcat.jpg" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="./imgs//manholdingterrapin.png" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="./imgs//womanholdinghamster.png" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="./imgs//womanholdingdog.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUES -->
+        <section class="values-section py-5 bg-light">
+            <div class="container">
+                <h2>Our values</h2>
+
+                <div class="row align-items-center">
+
+                    <!-- IMAGE COLUMN -->
+                    <div class="col-lg-4 values-image">
+                        <img src="./imgs/cat-siamese-indoor-owner.jpg.jpg" alt="Values illustration"
+                            style="width:100%; height:auto; display:block;">
+                    </div>
+
+                    <!-- TEXT GRID  -->
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Build Loving Homes</h5>
+                                <p>
+                                    We believe every pet deserves a safe, loving home. We connect people and animals in
+                                    a way
+                                    that creates lasting companionship and meaningful bonds.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Take Responsibility</h5>
+                                <p>
+                                    Adopting a pet is a lifelong commitment. We promote responsible ownership and ensure
+                                    every
+                                    adoption is thoughtful, prepared, and informed.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Be Compassionate</h5>
+                                <p>
+                                    Every animal has a story. We treat every pet with care, respect, and kindness,
+                                    giving them
+                                    the second chance they deserve.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Stay Curious</h5>
+                                <p>
+                                    We continuously learn how to better match pets with owners, improve animal welfare,
+                                    and
+                                    create a smoother adoption experience for everyone.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Speak Up for Animals</h5>
+                                <p>
+                                    We advocate for animals who cannot speak for themselves. Awareness, education, and
+                                    action
+                                    are at the heart of what we do.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Create Meaningful Experiences</h5>
+                                <p>
+                                    Adoption is more than a transaction — it's the beginning of a lifelong journey
+                                    filled with
+                                    love, trust, and unforgettable moments.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- TEAM -->
+        <section class="container py-5 text-center">
+            <h2 class="community-text-header">We're a community of animal lovers, and caregivers</h2>
+            <p class="community-text">If we had to choose one thing that brings our community together, it’s the shared
+                compassion for animals
+                in need. At PawMatch, we connect kind-hearted people with pets looking for a second chance, creating
+                bonds filled with love, trust, and companionship. We’re proud of the growing community that supports
+                adoption, and we invite you to be part of it 🐾</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="./imgs/lady-two.jpg" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <img src="./imgs/men-one.jpg" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <img src="./imgs/men-two.jpg" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <img src="./imgs/lady-one.jpg" class="img-fluid">
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>...</footer>
+
+    </body>
+
+
+
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="listings.html" class="nav-link px-2 text-body-secondary">Listings</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; 2026 PawMatch Ltd</p>
+    </footer>
+
+    <!-- Internal Custom Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+
+    <script src="./script/components/Spinner.js"></script>
+    <script src="script/const.js"></script>
+    <script src="script/auth.js"></script>
+    <script src="script/loader.js"></script>
+    <script src="./script/data.js"></script>
+    <script src="./script/homelisting.js"></script>
+
+    <script src="script/boostrap-ftns.js"></script>
+    <script src="script/form-validate.js"></script>
+    <script src="script/profile-applicationlistings.js"></script>
+
+</body>
+
+</html>
