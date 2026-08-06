@@ -2,9 +2,9 @@
 
 > A full-stack pet adoption web application that connects users with pets in need of a loving home.
 
-<p align="center">
+<!-- <p align="center">
   <img src="screenshots/homepage.png" alt="PawMatch Homepage" width="900">
-</p>
+</p> -->
 
 ---
 
